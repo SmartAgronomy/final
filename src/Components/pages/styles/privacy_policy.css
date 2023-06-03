@@ -1,0 +1,35 @@
+.privacy{
+    position:absolute;
+    margin-top:80px;
+   padding:0px 70px;
+   background-color: rgb(255, 242, 224);
+}
+.privacy h1{
+       font-size: 30px;
+       color:green;
+
+}
+p{
+    color:rgb(54, 54, 54);
+    font-family: sans-serif;
+}
+h2{
+    color:rgba(189, 0, 148, 0.731);
+}
+.info{
+    background-color: rgba(186, 186, 186, 0.178);
+}
+.info1{
+    background-color: rgba(186, 186, 186, 0.178);
+}
+.info2{
+    background-color: rgba(186, 186, 186, 0.178);
+}
+
+ul li{
+    color:rgb(54, 54, 54);
+    font-family: sans-serif;
+}
+h3{
+    color:rgb(66, 0, 0)
+}

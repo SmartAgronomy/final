@@ -1,0 +1,42 @@
+.admin-navbar{
+ height:70px;
+ background-color: rgba(2, 65, 63, 0.927);
+ box-shadow: 0px 0px 20px 0px rgb(138, 138, 138);
+}
+.admin-ul{
+    display:flex;
+    padding:11px 10px;
+    margin-top:-50px;
+    margin-left: 50px;
+
+}
+.admin-li{
+    padding:10px 10px;
+    margin-right:50px;
+    color:white;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-family:monospace;
+    word-spacing: -5px;
+    text-decoration:underline rgb(0, 17, 255);
+    cursor: pointer;
+
+}
+.admin-li:hover{
+    background-color: rgba(213, 213, 213, 0.12);
+    border-radius: 10px;;
+}
+.admin-heading{
+    padding:10px 10px;
+    margin-right:50px;
+    color:white;
+    font-weight: bold;
+    font-family:monospace;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    cursor: pointer;
+    font-size:20px;
+}
+.admin-heading:hover{
+    background-color: none;
+}

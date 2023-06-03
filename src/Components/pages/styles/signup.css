@@ -1,0 +1,175 @@
+.sign-up{
+    height:80vh;
+    width:60%;
+    box-shadow: 0px 0px 20px 0px black;
+    margin-left:300px;
+    margin-top: 50px;;
+    background-color:rgba(14, 91, 14, 0.76);
+   position: absolute;
+   margin-top:-570px;
+}
+.sign-up-form h3{
+    margin-left:30px;
+    margin-top: 20px;
+    position: absolute;
+    color:white;
+}
+.sign-up-form p{
+    margin-left: 30px;
+    margin-top: 60px;
+    position: absolute;
+    color:white;
+}
+.sign-up-form input{
+    border: none;
+    border-bottom: 1px solid white;
+    margin-right:20px;
+    margin-left: 20px;
+    margin-bottom: 30px;
+    width:230px;
+    background-color: transparent;
+    padding:8px 10px;
+   color: white;
+    
+}
+.sign-up-form input::-webkit-input-placeholder{
+    color:white;
+}
+.sign-up-form select{
+    border:none;
+    border-bottom: 1px solid white;
+    margin-left:20px;
+    padding:8px 10px;
+    margin-right: 20px;;
+    width: 230px;
+    background-color: transparent;
+    color:white;
+}
+.text-area {
+    margin-left:20px;
+    width:92%;
+    background: transparent;
+    border:none;
+    border-bottom:2px solid white;
+    color:white;
+    margin-top:-20px;
+}
+.signup-eye-toggle{
+    position: absolute;
+}
+.signup-eye-toggle .sign-up-hide-pass{
+    height:2vh;
+    margin-left: 770px;
+    margin-top:-120px;
+    cursor: pointer;
+}
+.bttn{
+    margin-left: 200px;;
+    background-color: rgb(165, 189, 159);
+    padding:7px 150px;
+    color:rgb(2, 51, 2);
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 18px;
+    border-radius: 10px;
+    border:none;
+
+}
+.signin-btn button{
+    margin-left: 200px;;
+    background-color: transparent;
+    padding:7px 150px;
+    color:rgb(11, 51, 2);
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 18px;
+    border-radius: 10px;
+    border:none;
+    margin-top: -40px;
+    position: absolute;
+}
+.bttn:hover{
+    background-color: rgb(255, 255, 255);
+    transition: 0.2s ease;
+}
+.already-registered{
+    margin-left: 30%;
+    color:white;
+}
+option{
+    color:rgb(109, 109, 109);
+}
+.reg-back img{
+    height:100vh;
+    width:100%;
+}
+.popup{
+    width:300px;
+    background-color: white;
+    border-radius: 10px;
+    position: absolute;
+    margin-top: -20%;
+    margin-left: 50%;
+    transform: translate(-50%,-50%) scale(0.1);
+    text-align: center;
+    padding: 0px 30px 30px;
+    color:black;
+    box-shadow:0px 0px 20px 0px rgb(95, 95, 95);
+    visibility: hidden;
+    transition: transform 0.4s, top 0.4s;
+}
+.open-popup{
+    visibility: visible;
+    transform: translate(-50%, -50%)scale(1);
+}
+.close-popup{
+    visibility: hidden;
+    transform: translate(-50%, -50%)scale(0.1);
+}
+.popup img{
+    height: 10vh;
+    margin-top: -24px;
+    border-radius: 50%;
+    box-shadow: 0px 2px 5px rgba(0,0,0,0.2);
+
+}
+.popup h4{
+
+    font-weight: 600;
+    margin: 30px 0px 10px;
+}
+.popup button{
+    width:100%;
+    margin-top: 10px;
+    padding: 10px 10px;
+    background-color: #1e6802;
+    color:rgb(255, 255, 255);
+    font-weight: 600;
+    border:none;
+    outline:none;
+    border-radius:5px;
+    cursor: pointer;
+    box-shadow:0px 0px 2px rgb(32, 32, 32);
+    transition: ease-in;
+}
+.popup .ok{
+    width:100%;
+    margin-top: 10px;
+    padding: 10px 10px;
+    background-color: #991313;
+    color:rgb(255, 255, 255);
+    font-weight: 600;
+    border:none;
+    outline:none;
+    border-radius:5px;
+    cursor: pointer;
+    box-shadow:0px 0px 2px rgb(32, 32, 32);
+    transition: ease-in;
+
+}
+.popup button:hover{
+    background-color: #184d04;
+}
+.popup .ok:hover{
+    background-color: #7d1010;
+}

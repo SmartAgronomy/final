@@ -1,0 +1,121 @@
+
+.footer-left p{
+    text-align: left;
+    padding-top:90px;
+    color:white;
+    font-family:Arial, Helvetica, sans-serif;
+    margin-left:60px;
+}
+.products-footer-page{
+background-color: #545454;
+height:280px;
+width:100%;
+position:absolute;
+margin-top: 110%;
+}
+.footer-left{
+text-align:center;
+}
+.agro{
+color:rgb(0, 255, 94);
+font-size:35px;
+margin:none;
+position:absolute;
+margin-left:11%;
+margin-top:10px;
+
+}
+.nomy{
+color:rgb(255, 255, 255);
+font-size:35px;
+margin:none;
+position:absolute;  
+margin-left:100%;
+margin-top:-45px;
+}
+.footer_logo{
+position: absolute;;
+height: 12vh;
+margin-left:-630px;
+margin-top:-20px;
+
+}
+.quick-links{
+position:absolute;
+margin-left:38%;
+margin-top:-230px;
+
+}
+.quick-links h2 {
+color:rgb(255, 255, 255);
+font-family:arial;
+font-size:21px;
+}
+.quick-links li{
+text-decoration:none;
+color:rgb(47, 255, 0);
+margin-top:0px;
+margin-left:-15px;
+}
+.quick-links li a{
+text-decoration:none;
+color:rgb(47, 255, 0);
+}
+.quick-as li a:hover{
+color:darkgoldenrod;
+}
+.services {
+position:absolute;
+margin-left:53%;
+margin-top: -230px;
+
+}
+.services  a{
+text-decoration: none;
+color:rgb(47, 255, 0);;
+margin-left:-30px;
+}
+.services a:hover{
+color:darkgoldenrod;
+}
+
+.services h2 {
+color:rgb(255, 255, 255);
+font-size:25px;
+font-family:arial;
+font-size:21px;
+
+}
+.contact-us {
+position:absolute;
+margin-left:72%;
+margin-top:-225px;
+}
+.contact-us a span:hover{
+color:darkgoldenrod;
+}
+.contact-us a img{
+height:4vh;
+border-radius:50%;
+margin-bottom:10px;
+}
+.contact-us h2{
+color:white;
+font-family:arial;
+font-size:21px;
+}
+.contact-us a span{
+position:absolute;
+margin-left:10px;
+margin-top:-1px;
+color:rgb(47, 255, 0);;
+}
+.social-media img{
+height:5vh;
+margin-right:15px;
+border-radius:50%;
+cursor:pointer;
+}
+.social-media{
+margin-left:-900px
+}

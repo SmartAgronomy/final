@@ -1,0 +1,27 @@
+.dropdownProfile{
+    position:absolute;
+    margin-top:-2230px;
+    background-color: #f2f2f2;
+    padding:10px 10px;
+    width:200px;
+    margin-left: 84%;
+    border-radius: 10px;;
+}
+.dropdownProfile .my-account{
+  border: none;
+  border-bottom: 2px solid rgb(178, 178, 178);
+}
+.dropdownProfile .my-account h5{
+  font-size: 15px;
+}
+
+.dropdownProfile::before{
+    content:"";
+    position:absolute;
+    top:-0.5rem;
+    right:1.5rem;
+    width:25px;
+    height:25px;
+    transform:rotate(45deg);
+    background-color: #f2f2f2;
+}
