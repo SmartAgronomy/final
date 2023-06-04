@@ -131,10 +131,21 @@ function Header() {
           />
         </div>
         <div class="cart">
-          <Link to="/cart">
-            <img src={cart} />
-            {cartCount > 0 && <h3 class="cart-notification">{cartCount}</h3>}
-          </Link>
+        {isAdmin ? (
+              <>
+               
+
+              </>
+            ) : (
+              <>
+              <Link to="/cart">
+                <img src={cart} />
+                {cartCount > 0 && <h3 class="cart-notification">{cartCount}</h3>}
+              </Link>
+                
+              </>
+            )}
+          
         </div>
         <nav >
           <ul>
@@ -145,7 +156,7 @@ function Header() {
             <li><Link to="/" class="root">Dashboard</Link></li>
             <hr class="dashboard-underline"></hr>
 
-            <li><Link to="/Marketplace">Marketplace</Link>
+            <li><Link to="/blogs">Blogs</Link>
               <div class="sub-nav_1">
                 <ul>
                   <li><Link to="#">Sellers</Link></li>

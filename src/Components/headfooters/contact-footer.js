@@ -40,7 +40,7 @@ function Contact_footer(){
                <li><Link to="#" >Products </Link> <br></br></li>
                <li><Link to="/privacy_policy" >Privacy Policy</Link><br></br></li>
                <li><Link to="#" >Terms and Conditions</Link><br></br></li>
-               <li><Link to="#" >MarketPlace</Link><br></br></li>
+               <li><Link to="#" >Blogs</Link><br></br></li>
                <li><Link to="/about" >About us</Link><br></br></li>
                <li><Link to="#" >Reports</Link><br></br></li>
                <li><Link to="#" >FAQ's</Link><br></br></li>
