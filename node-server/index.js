@@ -9,7 +9,7 @@ const categoryRoutes = require('./routes/categoryRoutes');
 main().catch((err) => console.log(err));
 
 async function main() {
-  await mongoose.connect('mongodb://127.0.0.1:27017/userlogs');
+  await mongoose.connect('mongodb+srv://rentalagriindia:cluster123@userlogs.tbiwfbc.mongodb.net/');
   console.log('db connected');
 }
 

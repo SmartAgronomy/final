@@ -36,7 +36,9 @@ import Logout from '@mui/icons-material/Logout';
 import "../pages/styles/cartcount.css";
 import axios from "axios";
 import { useEffect } from "react";
-import Website_logo from "../Images/website-logo-new2.png"
+import Website_logo from "../Images/website-logo-new2.png";
+import debounce from "lodash/debounce";
+
 
 
 
@@ -44,7 +46,6 @@ function Header() {
 
   const [cookies, setCookies] = useCookies(["access_token"]);
   const [anchorEl, setAnchorEl] = React.useState(null);
-  const [searchInput, setSearchInput] = useState("");
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -60,6 +61,20 @@ function Header() {
   const { isLogged, isAdmin, setIsLogged } = useUserAPI(cookies.access_token);
 
   console.log('isAdmin:', isAdmin);
+
+  const [searchInput, setSearchInput] = useState("");
+
+    const MIN_SEARCH_LENGTH = 3; // Minimum required length for search input
+  const DEBOUNCE_DELAY = 500; // Delay in milliseconds
+
+  const handleSearch = debounce(() => {
+    if (searchInput.length < MIN_SEARCH_LENGTH) {
+      return;
+    }
+
+    // Redirect to the Products page with the search query as a URL parameter
+    navigate(`/products?search=${searchInput}`);
+  }, DEBOUNCE_DELAY);
 
 
 
@@ -105,9 +120,6 @@ function Header() {
     return null;
   };
 
-  const handleSearch = () => {
-    navigate(`/products?search=${searchInput}`);
-  };
 
 
 
@@ -118,8 +130,8 @@ function Header() {
         <div className="search_bar">
           <input
             className="search-input"
-            type="search"
-            placeholder="Search for Products..."
+            type="text"
+            placeholder="Search products..."
             value={searchInput}
             onChange={(e) => setSearchInput(e.target.value)}
           />
