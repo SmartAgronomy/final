@@ -3,6 +3,14 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useCookies } from "react-cookie";
 import { useNavigate, useLocation } from "react-router-dom";
+import Box from "@mui/material/Box";
+import Rating from "@mui/material/Rating";
+import Typography from "@mui/material/Typography";
+import Dialog from "@mui/material/Dialog";
+import DialogTitle from "@mui/material/DialogTitle";
+import DialogContent from "@mui/material/DialogContent";
+import DialogActions from "@mui/material/DialogActions";
+import Button from "@mui/material/Button";
 
 function ProductList() {
   const [products, setProducts] = useState([]);
@@ -13,6 +21,8 @@ function ProductList() {
   const [categories, setCategories] = useState([]);
   const location = useLocation();
   const searchQuery = new URLSearchParams(location.search).get("search");
+  const [value, setValue] = React.useState(4);
+  const [openDialog, setOpenDialog] = useState(false);
 
   useEffect(() => {
     fetchProducts();
@@ -22,6 +32,15 @@ function ProductList() {
   useEffect(() => {
     filterProducts();
   }, [searchQuery, products]);
+
+  const openSuccessDialog = () => {
+    setOpenDialog(true);
+  };
+
+  // Function to close the dialog
+  const closeSuccessDialog = () => {
+    setOpenDialog(false);
+  };
 
   const fetchProducts = async () => {
     try {
@@ -41,46 +60,58 @@ function ProductList() {
     }
   };
 
-  const handleAddToCart = (productId) => {
-        const _productId = productId;
-        const userId = localStorage.getItem("userID");
-        const token = cookies.access_token;
+
+    const handleAddToCart = (productId) => {
+      const _productId = productId;
+      const userId = localStorage.getItem("userID");
+      const token = cookies.access_token;
     
-        console.log({ productId: _productId, userId });
-        const _data = { productId: _productId, userId };
-        const headers = {
-          Authorization: `Bearer ${token}`,
-        };
+      console.log({ productId: _productId, userId });
+      const _data = { productId: _productId, userId };
+      const headers = {
+        Authorization: `Bearer ${token}`,
+      };
     
+      try {
         axios
           .post("http://localhost:8080/api/addToCart", _data, { headers })
           .then((res) => {
             console.log(res.data, "49");
-            if (res.data.code === 200) {
-              // Handle success if needed
+            if (res.data.code == 200) {
+              window.alert("Product added to cart successfully");
             }
           })
           .catch((err) => {
             console.log(err, "30");
+            window.alert("An error occurred while adding the product to the cart. Please try again.");
           });
+      } catch (error) {
+        console.log(error, "Error occurred while making the request.");
+        window.alert("An error occurred while making the request. Please try again.");
+      }
     
-        if (!token) {
-          alert("Please Login To Continue");
+      if (!token) {
+        window.alert("Please Login To Continue");
+      }
+    };
+    
+  
+  
+  
+
+
+      const handleCategoryFilter = (categoryName) => {
+        const filtered = products.filter(
+          (product) => product.categoryName === categoryName
+        );
+        setFilteredProducts(filtered);
+    
+        if (categoryName) {
+          setSelectedCategory(categoryName);
+        } else {
+          resetFilter();
         }
       };
-
-  const handleCategoryFilter = (categoryName) => {
-    const filtered = products.filter(
-      (product) => product.categoryName === categoryName
-    );
-    setFilteredProducts(filtered);
-
-    if (categoryName) {
-      setSelectedCategory(categoryName);
-    } else {
-      resetFilter();
-    }
-  };
 
   const resetFilter = () => {
     setFilteredProducts([]);
@@ -96,7 +127,7 @@ function ProductList() {
       setFilteredProducts(filtered);
     } else if (selectedCategory) {
       const filtered = products.filter(
-        (product) => product.categoryName === selectedCategory
+        (product) => product.category.categoryName === selectedCategory
       );
       setFilteredProducts(filtered);
     } else {
@@ -106,13 +137,12 @@ function ProductList() {
 
   return (
     <div className="product-list-container">
-      <div>
+      <div class="select-category">
         <select
           value={selectedCategory}
           onChange={(e) => handleCategoryFilter(e.target.value)}
         >
-          <option value="">All Categories</option>
-          <option value="sort-category">Sort by Category</option>
+           <option value="sort-category">Sort by Category</option>
           {categories.map((category) => (
             <option key={category._id} value={category.categoryName}>
               {category.categoryName}
@@ -123,54 +153,90 @@ function ProductList() {
       </div>
 
       {searchQuery || selectedCategory ? (
-        <>
-          <h2>Filtered Results:</h2>
+        
+         <>
+         <div class="all-filter-products">
+          <h1>Filtered Results:</h1>
           {filteredProducts.length > 0 ? (
             <ul>
               {filteredProducts.map((product) => (
-                <li key={product._id}>
-                  <strong>{product.productName}</strong>
-                  <p>{product.productDescription}</p>
-                  <p>Amount: {product.amount}</p>
-                  <p>{product.categoryName}</p>
-                  {product.productImage && (
-                    <img
-                      src={product.productImage.location}
-                      alt={product.productImage.filename}
-                    />
-                  )}
-                  <button onClick={() => handleAddToCart(product._id)}>
-                    Add to Cart
-                  </button>
-                </li>
+                 <li key={product._id}>
+                 {product.productImage && (
+                   <img
+                     src={product.productImage.location}
+                     alt={product.productImage.filename}
+                   />
+                 )}
+                 <strong>{product.productName}</strong>
+                 <p>{product.productDescription}</p>
+                 <p class="item-price">{product.amount}/- Only</p>
+                 <p>{product.category.categoryName}</p>
+                 <Box
+         sx={{
+           '& > legend': { mt: 2 },
+         }}
+       >
+         <Rating
+           name="simple-controlled"
+           value={value}
+           onChange={(event, newValue) => {
+             setValue(newValue);
+           }}
+         />
+       </Box>
+       <span class="free-delivery-txt">Free Delivery..!</span><br></br><br></br>
+                 
+                 <div class="cart-btn">
+                 <button onClick={() => handleAddToCart(product._id)}>
+                   Add to Cart
+                 </button>
+                 </div>
+               </li>
               ))}
             </ul>
           ) : (
-            <p>No products found.</p>
+            <p class="no-products-found">No products found.</p>
           )}
+          </div>
         </>
       ) : null}
-
-      <h2>All Products:</h2>
+<div class="all-filter-products">
+<h1>All Products:</h1>
       <ul>
         {products.map((product) => (
           <li key={product._id}>
-            <strong>{product.productName}</strong>
-            <p>{product.productDescription}</p>
-            <p>Amount: {product.amount}</p>
-            <p>{product.categoryName}</p>
-            {product.productImage && (
-              <img
-                src={product.productImage.location}
-                alt={product.productImage.filename}
-              />
-            )}
-            <button onClick={() => handleAddToCart(product._id)}>
-              Add to Cart
-            </button>
-          </li>
+          {product.productImage && (
+            <img
+              src={product.productImage.location}
+              alt={product.productImage.filename}
+            />
+          )}
+          <strong>{product.productName}</strong>
+          <p>{product.productDescription}</p>
+          <p class="item-price">{product.amount}/- Only</p>
+          <p>{product.category.categoryName}</p>
+          <Box
+    sx={{
+      '& > legend': { mt: 2 },
+    }}
+  >
+    <Rating
+      name="simple-controlled"
+      value={value}
+      onChange={(event, newValue) => {
+        setValue(newValue);
+      }}
+    />
+  </Box>
+  <span class="free-delivery-txt">Free Delivery..!</span><br></br><br></br>
+          
+          <button onClick={() => handleAddToCart(product._id)}>
+            Add to Cart
+          </button>
+        </li>
         ))}
       </ul>
+    </div>
     </div>
   );
 }

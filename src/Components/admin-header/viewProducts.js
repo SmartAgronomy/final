@@ -52,37 +52,28 @@ function ViewProducts(){
     return(
 <div>
 <AdminBar />
-<div class="product-container">
-
-  <div class="product-list">
+<div className="product-list-container"> 
+<div class="all-filter-products">
   <h1>Products List</h1>
-  <div class="item-list">
 <ul>
   {products.map((product) => (
-    <div class="display-products">
     <li type="none" key={product._id}>
-
-         {product.productImage && (
+       {product.productImage && (
         <img
           src={product.productImage.location}
           alt={product.productImage.filename}
         />
       )}
-<br></br>
-   <div>
       <strong>{product.productName}</strong>
       <p>{product.productDescription}</p>
-      <p>Price: {product.amount}/- per day</p>
-      <p>{product.category.categoryName}</p>
-      </div>
+      <p  class="item-price">Price: {product.amount}/- per day</p>
+      <p class="category">Type: {product.category.categoryName}</p><br></br>
       <button onClick={() => handleDeleteProduct(product._id)}>
         Delete
       </button>
     </li>
-    </div>
   ))}
 </ul>
-</div>
 </div>
 </div>
 </div>

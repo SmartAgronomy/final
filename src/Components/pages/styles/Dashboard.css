@@ -900,6 +900,7 @@ margin-left: -13px;
     padding:6px 70px;
     background-color: green;
     color:white;
+    margin-bottom: 70px;
     border:none;
 }
 .prohhh button:hover{
@@ -912,6 +913,10 @@ hr{
     width:150px;
     background-color:black;
 }
-
-
+.logo111 img{
+    height:50vh;
+    margin-top:-70px;
+    position: fixed;
+    margin-left:0px;
+}
 

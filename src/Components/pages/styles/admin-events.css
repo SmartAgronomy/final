@@ -142,21 +142,7 @@
     background-color: #04AA6D;
     color: white
 }
-.product-container{
-    background-color: rgb(241, 241, 241);
-    padding:20px;
-}
-.product-list{
-    background-color: white;
-    padding:20px;
-    margin-left:10%;
-    width:80%;
-    border-radius:10px;
-}
-.display-product{
-    background-color: rgb(199, 197, 197);
-    display:grid;  
-}
-.item-list img{
-    height:10vh;
+.category{
+    font-weight: 600;
+    color:#04AA6D
 }

@@ -91,6 +91,35 @@ const login = async (req, res) => {
     res.status(500).json({ message: 'Internal server error' });
   }};
 
+  // controllers/profileController.js
+
+
+const updateProfile = async (req, res) => {
+  const userId = req.user.userId;
+  const { fname, lname, mobile } = req.body;
+
+  try {
+    // Find the user by ID
+    const user = await User.findById(userId);
+
+    if (!user) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+
+    // Update the user's profile data
+    user.fname = fname;
+    user.lname = lname;
+    user.mobile = mobile;
+    const updatedUser = await user.save();
+
+    res.json(updatedUser);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Internal server error' });
+  }
+};
+
+
 
 
   const addToCart = async (req, res) => {
@@ -164,4 +193,4 @@ const getCart = async (req, res) => {
   }
 };
 
-module.exports = { signup, login, profile, addToCart, getCart, removeFromCart };
+module.exports = { signup, login, profile, addToCart, getCart, removeFromCart,  updateProfile };

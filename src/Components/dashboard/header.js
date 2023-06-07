@@ -8,7 +8,7 @@ import languages from "../Images/language_logo.png"
 import settings from "../Images/settings_logo.jpeg"
 import FAQ from "../Images/FAQ_logo.jpeg"
 import sign_in from "../Images/sign_in.jpg"
-
+import logo from "../Images/Rent_logo-removebg-preview.png"
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import Profile from "../pages/profile";
 import logout_img from "../Images/logout-logo.png"
@@ -339,6 +339,11 @@ function Header() {
 
 
       </header>
+
+      <div class="logo111">
+              <img src={logo} />
+            </div>
+
       <div class="logo">
           <img class="website_logo" src={Website_logo} />
         </div>
@@ -349,4 +354,3 @@ function Header() {
   )
 }
 export default Header;
-

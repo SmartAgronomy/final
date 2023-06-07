@@ -86,33 +86,24 @@ function Contact(){
 
             
                 <span>Send your request</span><br></br><br></br><br></br>
-                
-      {/* <Box
-      component="form"
-      sx={{
-        '& .MuiTextField-root': { m: 1, width: '35ch' ,marginRight:'15px', marginBottom:'30px' },
-      }}
-      noValidate
-      autoComplete="off"
-    > */}
 
      
-        <div>
-        <form  onSubmit={SentEmail} id="form">
+        <div class="contact-form-template-higher">
+        <form class="contact-form-template" onSubmit={SentEmail} id="form">
   <div class="field">
-    <label for="user_name">user_name</label>
+    <label for="user_name">Username</label>
     <input type="text" name="user_name" id="user_name" />
   </div>
   <div class="field">
-    <label for="message">message</label>
+    <label for="message">Message</label>
     <input type="text" name="message" id="message" />
   </div>
   <div class="field">
-    <label for="user_email">user_email</label>
+    <label for="user_email">Email</label>
     <input type="text" name="user_email" id="user_email" />
   </div>
   <div class="field">
-    <label for="reply_to">reply_to</label>
+    <label for="reply_to">Reply to</label>
     <input type="text" name="reply_to" id="reply_to" />
   </div>
 
@@ -122,76 +113,8 @@ function Contact(){
 <script type="text/javascript">
   emailjs.init('c3AKDUbdd39cDfec2')
 </script>
-        </div>
-
-        {/* <TextField
-         
-          id="filled-multiline-flexible"
-          label="Name"
-          multiline
-          maxRows={4}
-          variant="filled"
-        />
-        
-         <TextField
-         name="user_email"
-          id="filled-multiline-flexible"
-          label="Email-address"
-          multiline
-          maxRows={4}
-          variant="filled"
-        />
-         <TextField
-         name="contact"
-          id="filled-multiline-flexible"
-          label="Contact no"
-          multiline
-          maxRows={4}
-          variant="filled"
-        />
-         <TextField
-         name="subject"
-          id="filled-multiline-flexible"
-          label="Subject"
-          multiline
-          maxRows={4}
-          variant="filled"
-        />
-        
-        
-
-        
-      </div>
-    </Box>
-    <Box
-      component="form"
-      sx={{
-        '& .MuiTextField-root': { m: 1, width: '73ch',marginRight:'15px', marginBottom:'30px' },
-      }}
-      noValidate
-      autoComplete="off"
-      
-    >
-<TextField 
-name="message"
-          id="filled-multiline-flexible"
-          label="Write Your Queries"
-          multiline
-          maxRows={4}
-          variant="filled"
-          
-        />
-    </Box>
-    <Stack direction="row" spacing={10} sx={{width:100,marginLeft:'10px'}}>
-      <Button  variant="contained" endIcon={<SendIcon />}>
-        Send
-      </Button>
-    </Stack> */}
-                
-                
+        </div>        
               
-             
-
          </div>
             <div class="contact_us">
                               <img src={phone_icon}alt="contact no." />

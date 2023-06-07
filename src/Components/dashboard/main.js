@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import AOS from 'aos'
 import "aos/dist/aos.css";
+import { Link } from 'react-router-dom';
 import Rotary from "../Images/rotary.jpg"
 import Cultivator from "../Images/cultivator.jpeg"
 import Pumps from "../Images/pumps.webp"
@@ -38,7 +39,7 @@ function Main(){
            <p>We will provide farm equipment rentals to advance the productivity of your Farm<br></br>
            A great opportunity for starting an online agricultural equipment Rental Platform.</p>
            <span>Lets, grow your business....</span><br></br>
-           <button>Rent Now</button>
+           <Link to="/products"><button>Rent Now</button></Link>
        </div>
 
       <h1 class="heading">Our Brands</h1>
@@ -92,7 +93,7 @@ function Main(){
           Cultivator
         </Typography>
         <Typography variant="body2" color="text.secondary">
-        Agricultural Machine Cultivator Weeder Land Cultivators for Tractor- Extra Heavy Duty Spring Loaded Cultivator
+        Agricultural Machine Cultivator Weeder Land Cultivators for Tractor- Extra Heavy Duty 
         </Typography>
       </CardContent>
       <button className='card-btn'>Add to Cart</button>
@@ -116,7 +117,7 @@ function Main(){
       <button className='card-btn'>Add to Cart</button>
     </Card>
     </div>
-    <button class="more-products">More Products &minus;&#10095;</button>
+    <Link to="/products"><button class="more-products">More Products &minus;&#10095;</button></Link>
             <div class="importance" >
                <h2>Why Digitalized Smart Agronomy ?</h2>
                <div class="importance-para"><p>The farm equipment rental market is estimated to account for a value of USD 46.8 billion in 2020 and is projected to grow at a CAGR of 7.3% from 2020, to reach a value of USD 66.4 billion by 2025. The global market is projected to witness significant growth due to factors such as the rise in the global population, shortage of skilled labor, increasing mechanization trends and rising demand for food grain products have fueled technological advancements across the globe are some of the major factors fueling the demand for farm equipment rental.<br></br>

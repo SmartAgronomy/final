@@ -1,132 +1,174 @@
 .home-page {
-    display: flex;
-  }
-  
-  .cart-overlay {
-    position: fixed;
-    top: 10px;
-    width: 90%;
-    left:0;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: 999;
-    margin-left:5%;
-  }
-  
-  .cart-container {
-    background-color: #fff;
-    padding: 20px;
-    height: 100%;
-    overflow: auto;
-  }
-  .cart-container h1{
-    color:black;
-    text-align: left;
-    font-size: 35px;
-    font-weight: 600;
-    padding:10px 20px;
-    font-family:sans-serif;
-    letter-spacing: 0px;
-  }
-  
-  .product-list {
-    display: flex;
-    flex-wrap: wrap;
-  }
-  
-  .product-item {
-    margin: 20px;
-    background-color: #eee;
-    width: 100%;
-    border-radius: 5px;
-    display: flex;
-    padding:10px;
-  }
-  
-  .product-image {
-    width:100px;
-    height:100px;
+  display: flex;
+}
 
-  }
-  
-  .product-details {
-    margin-top: 10px;
-    margin-left: 30px;;
-    width:100%;
-  }
-  .product-details p{
-    font-size: 20px;
-    font-weight: 600;
-  }
-  .product-details .span{
-    width:100px;
-  }
-  .remove-button p
- {
-    margin-top: 10px;
-  }
-  .remove-button{
-    margin-right:20px;
-    margin-left:20px;
-  }
-  .remove-button button{
-    height:50px;
-    width:150px;
-    padding:10px 10px;
-    border-radius: 5px;
-    background-color: rgb(123, 2, 2);
-    border:none;
-    color:white;
-    box-shadow: 0px 0px 10px 0px rgb(180, 174, 174);
-    transition: 0.3s ease;
-    
-  }
-  .remove-button button:hover{
-    background-color: rgb(86, 1, 1);
-  }
-  .buy-button button{
-    height:50px;
-    width:150px;
-    padding:10px 10px;
-    border-radius: 5px;
-    background-color: rgb(2, 115, 11);
-    border:none;
-    color:white;
-    box-shadow: 0px 0px 10px 0px rgb(180, 174, 174);
-    transition: 0.3s ease;
-  }
-  .buy-button button:hover{
-    background-color: rgb(2, 72, 8);
-  }
-  .buy-button p{
-    margin-top: 10px;
-    color:green; 
-  }
-  .total{
-    margin-left:160px;
+.cart-overlay {
+  position: fixed;
+  top: 10px;
+  width: 90%;
+  left:0;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+  margin-left:5%;
+}
 
-  }
-  .total h3{
-    display: flex;
-  }  
-  .total hr{
-    height:2px;
-    width:900px;
-    background-color: #000000;
-    border:1px solid black
-  }
-  .total button{
-    height:50px;
-    width:200px;
-    padding:10px 10px;
-    border-radius: 5px;
-    background-color: rgb(2, 115, 11);
-    border:none;
-    color:white;
-    box-shadow: 0px 0px 10px 0px rgb(180, 174, 174);
-    transition: 0.3s ease;
-    margin-top: 2%;
-  }
-  .total button:hover{
-    background-color: rgb(2, 72, 8);
-  }
+.cart-container {
+  background-color: #fff;
+  padding: 20px;
+  height: 100%;
+  overflow: auto;
+}
+.cart-container h1{
+  color:black;
+  text-align: left;
+  font-size: 35px;
+  font-weight: 600;
+  padding:10px 20px;
+  font-family:sans-serif;
+  letter-spacing: 0px;
+}
+
+.product-list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.product-item {
+  margin: 20px;
+  background-color: #eee;
+  width: 100%;
+  border-radius: 5px;
+  display: flex;
+  padding:10px;
+}
+
+.product-image {
+  width:100px;
+  height:100px;
+
+}
+
+.product-details {
+  margin-top: 10px;
+  margin-left: 30px;;
+  width:100%;
+}
+.product-details p{
+  font-size: 20px;
+  font-weight: 600;
+}
+.product-details .span{
+  width:100px;
+}
+.remove-button p
+{
+  margin-top: 10px;
+}
+.remove-button{
+  margin-right:20px;
+  margin-left:20px;
+}
+.remove-button button{
+  height:50px;
+  width:150px;
+  padding:10px 10px;
+  border-radius: 5px;
+  background-color: rgb(123, 2, 2);
+  border:none;
+  color:white;
+  box-shadow: 0px 0px 10px 0px rgb(180, 174, 174);
+  transition: 0.3s ease;
+  
+}
+.remove-button button:hover{
+  background-color: rgb(86, 1, 1);
+}
+.buy-button button{
+  height:50px;
+  width:150px;
+  padding:10px 10px;
+  border-radius: 5px;
+  background-color: rgb(2, 115, 11);
+  border:none;
+  color:white;
+  box-shadow: 0px 0px 10px 0px rgb(180, 174, 174);
+  transition: 0.3s ease;
+}
+.buy-button button:hover{
+  background-color: rgb(2, 72, 8);
+}
+.buy-button p{
+  margin-top: 10px;
+  color:green; 
+}
+.total{
+  margin-left:160px;
+
+}
+.total h3{
+  display: flex;
+  margin-left:-140px;
+}  
+.total hr{
+  height:2px;
+  width:1180px;
+  margin-left:-140px;
+  background-color: #000000;
+  border:1px solid black
+}
+.total button{
+  height:50px;
+  width:200px;
+  padding:10px 10px;
+  border-radius: 5px;
+  background-color: rgb(2, 115, 11);
+  border:none;
+  color:white;
+  box-shadow: 0px 0px 10px 0px rgb(180, 174, 174);
+  transition: 0.3s ease;
+  margin-top: 2%;
+  margin-left:-140px;
+}
+.total button:hover{
+  background-color: rgb(2, 72, 8);
+}
+.quantity button{
+padding:0px 8px;
+margin-right:10px;
+margin-left:10px;
+margin-top:15px;
+font-weight: 600;
+font-size:20px;
+cursor: pointer;
+color:white
+} 
+.quantity span{
+  font-size: 20px;
+  font-weight: 600;
+}
+.quantity .increase{
+  background-color: green;
+  border: none;
+}
+.quantity .decrease{
+  background-color: red;
+  border:none;
+}
+.qr-popup{
+  position: absolute;
+  margin-top:-50%;
+  margin-left:30%;
+  text-align: center;
+  transform: scale(0.1);
+  visibility: hidden;
+  transition: all 0.4s ease;
+}
+.qr-popup img{
+  height:50vh;
+}
+.openQrPopup{
+  visibility: visible;
+  transform: scale(1);
+  margin-top:-30%;
+}

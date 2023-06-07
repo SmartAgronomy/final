@@ -8,9 +8,6 @@ function Products() {
   return (
     <div>
       <Header />
-      <div className="products-head">
-        <h1>Choose by Categories</h1>
-      </div>
       <ProductList/>
       <ProductsFooter />
     </div>
