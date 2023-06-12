@@ -137,7 +137,7 @@ const updateProfile = async (req, res) => {
     const isProductExist = user.cart.some((product) => product.toString() === productId);
   
     if (isProductExist) {
-      return res.status(200).json({ message:(" Product already exists in the cart") });
+      return res.status(404).json({ message:(" Product already exists in the cart") });
     }else{
   
     user.cart.addToSet(productId);

@@ -8,7 +8,7 @@ import Contact_background from "../Images/contact-background.jpg"
 import "./styles/contact.css"
 import AOS from "aos";
 import "aos/dist/aos.css";
-import { useEffect } from 'react'
+import { useEffect,useState } from 'react'
 import facebook from "../Images/facebook.jpg"
 import twitter from "../Images/i4.jpg"
 import instagram from "../Images/instagram_logo.webp"
@@ -24,44 +24,48 @@ import "https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"
 
 function Contact(){
   const btn = document.getElementById('button');
+  const [form, setForm] = useState({});
 
-  const SentEmail=(e)=>{
-      e.preventDefault();
+
+  const SentEmail = (e) => {
+    e.preventDefault();
+    const isValid = validateForm();
+    
+    if (isValid) {
       btn.value = 'Sending...';
-      emailjs.sendForm("service_k702nu6","template_okwqn9r",e.target,"c3AKDUbdd39cDfec2")
-      .then(()=>{
-        btn.value = 'Send Email';
-        alert("Message sent successfully");
-      }).catch(()=>{
-        btn.value = 'Send Email';
-        alert("Something Went Wrong");
-      })
-        
+      emailjs
+        .sendForm("service_k702nu6", "template_okwqn9r", e.target, "c3AKDUbdd39cDfec2")
+        .then(() => {
+          btn.value = 'Send Email';
+          alert("Message sent successfully");
+        })
+        .catch(() => {
+          btn.value = 'Send Email';
+          alert("Something went wrong");
+        });
+    }
+  };
+
+  const handleForm = (e)=>{
+    setForm({
+      ...form,
+      [e.target.name] : e.target.value
+    })
   }
+
+
+  const validateForm = () => {
+    if (!form.user_name || !form.message || !form.user_email || !form.reply_to) {
+      alert("All fields must be filled");
+      return false;
+    }
+    return true;
+  };
     useEffect(()=>{
         AOS.init({duration :2000})
      },[])
 
-//      const btn = document.getElementById('button');
 
-// document.getElementById('form')
-//  .addEventListener('submit', function(event) {
-//    event.preventDefault();
-
-//    btn.value = 'Sending...';
-
-//    const serviceID = 'service_k702nu6';
-//    const templateID = 'template_okwqn9r';
-
-//    emailjs.sendForm(serviceID, templateID, this)
-//     .then(() => {
-//       btn.value = 'Send Email';
-//       alert('Sent successfully!');
-//     }, (err) => {
-//       btn.value = 'Send Email';
-//       alert(JSON.stringify(err));
-//     });
-// });
 
 
     return(
@@ -89,26 +93,26 @@ function Contact(){
 
      
         <div class="contact-form-template-higher">
-        <form class="contact-form-template" onSubmit={SentEmail} id="form">
-  <div class="field">
-    <label for="user_name">Username</label>
-    <input type="text" name="user_name" id="user_name" />
-  </div>
-  <div class="field">
-    <label for="message">Message</label>
-    <input type="text" name="message" id="message" />
-  </div>
-  <div class="field">
-    <label for="user_email">Email</label>
-    <input type="text" name="user_email" id="user_email" />
-  </div>
-  <div class="field">
-    <label for="reply_to">Reply to</label>
-    <input type="text" name="reply_to" id="reply_to" />
-  </div>
+        <form class="contact-form-template" onSubmit={SentEmail  } id="form">
+            <div class="field">
+              <label for="user_name">Username</label>
+              <input type="text" name="user_name" id="user_name" onChange={handleForm}/>
+            </div>
+            <div class="field">
+              <label for="message">Message</label>
+              <input type="text" name="message" id="message" onChange={handleForm}/>
+            </div>
+            <div class="field">
+              <label for="user_email">Email</label>
+              <input type="text" name="user_email" id="user_email" onChange={handleForm}/>
+            </div>
+            <div class="field">
+              <label for="reply_to">Reply to</label>
+              <input type="text" name="reply_to" id="reply_to" onChange={handleForm}/>
+            </div>
 
-  <input type="submit" id="button" value="Send Email" />
-</form>
+            <input type="submit" id="button" value="Send Email" onClick={validateForm}/>
+      </form>
 
 <script type="text/javascript">
   emailjs.init('c3AKDUbdd39cDfec2')

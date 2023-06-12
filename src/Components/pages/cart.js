@@ -1,7 +1,7 @@
 
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useCookies } from "react-cookie";
 import "./styles/cart.css";
 import Box from '@mui/material/Box';
@@ -52,7 +52,21 @@ function Cart() {
   }, []);
 
   if (!cookies.access_token) {
-    return <p>Please login to view the cart.</p>;
+    return (
+      <div className="centered-container">
+        <p>Please Login To Continue.. </p>
+        <Link to="/signin" ><button>LOGIN</button></Link>
+      </div>
+    );
+  }
+
+  if (data.length === 0) {
+    return (
+      <div className="centered-container">
+        <p>Please select products.</p>
+        <Link to="/products" ><button>Products</button></Link>
+      </div>
+    );
   }
 
   const handleRemoveFromCart = async (productId) => {

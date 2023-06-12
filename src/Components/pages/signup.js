@@ -75,7 +75,7 @@ function SignupUpdated() {
     const confirmPassword =form.cpassword;
 
     if (!form.fname || !form.lname || !form.mobile || !form.email || !password || !form.city || !form.state || !form.address) {
-      alert("Please Fill all the details below to Register")
+      alert("Please Fill all the details Correctlly below to Register")
     }
 
   
@@ -158,9 +158,9 @@ function SignupUpdated() {
           </div>
         
 
-          <button class="bttn"   type="submit" onClick={validateForm} > Sign Up</button>
+          <button class="bttn"   type="submit" > Sign Up</button>
           <div class="signin-btn">
-          <button class="bttn" id="btn"  type="submit" onClick={openPopup}> Sign Up</button><br></br><br></br>
+          <button class="bttn" id="btn"  type="submit" onClick={openPopup && validateForm}> Sign Up</button><br></br><br></br>
           </div>
           <div class="already-registered">
           Already Signup<Link to="/signin">Click here to login</Link>

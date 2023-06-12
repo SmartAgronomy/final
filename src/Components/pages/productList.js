@@ -61,48 +61,50 @@ function ProductList() {
   };
 
 
-    const handleAddToCart = (productId) => {
-      const _productId = productId;
-      const userId = localStorage.getItem("userID");
-      const token = cookies.access_token;
-    
-      console.log({ productId: _productId, userId });
-      const _data = { productId: _productId, userId };
-      const headers = {
-        Authorization: `Bearer ${token}`,
-      };
-    
-      try {
-        axios
-          .post("http://localhost:8080/api/addToCart", _data, { headers })
-          .then((res) => {
-            console.log(res.data, "49");
-            if (res.data.code == 200) {
-              window.alert("Product added to cart successfully");
-            }
-          })
-          .catch((err) => {
-            console.log(err, "30");
-            window.alert("An error occurred while adding the product to the cart. Please try again.");
-          });
-      } catch (error) {
-        console.log(error, "Error occurred while making the request.");
-        window.alert("An error occurred while making the request. Please try again.");
-      }
-    
-      if (!token) {
-        window.alert("Please Login To Continue");
-      }
+
+  const handleAddToCart = (productId) => {
+    const _productId = productId;
+    const userId = localStorage.getItem("userID");
+    const token = cookies.access_token;
+  
+    console.log({ productId: _productId, userId });
+    const _data = { productId: _productId, userId };
+    const headers = {
+      Authorization: `Bearer ${token}`,
     };
+  
+    try {
+      axios
+        .post("http://localhost:8080/api/addToCart", _data, { headers })
+        .then((res) => {
+          console.log(res.data, "49");
+          if (res.status === 200) {
+            window.alert("Product added to cart successfully.");
+            window.location.reload(); // Refresh the page
+          } 
+        })
+        .catch((err) => {
+          console.log(err, "30");
+          window.alert("Product is already present in your cart. Please place an order.");
+          navigate("/cart");
+        });
+    } catch (error) {
+      console.log(error, "Error occurred while making the request.");
+      window.alert("An error occurred while making the request. Please try again.");
+    }
+  
+    if (!token) {
+      window.alert("Please Login To Continue");
+    }
+  };
+  
     
-  
-  
-  
+    
 
 
       const handleCategoryFilter = (categoryName) => {
         const filtered = products.filter(
-          (product) => product.categoryName === categoryName
+          (product) =>product.category.categoryName === categoryName
         );
         setFilteredProducts(filtered);
     

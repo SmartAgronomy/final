@@ -110,6 +110,7 @@ function Header() {
     setCookies("access_token", "");
     window.localStorage.clear();
     setIsLogged(false);
+    alert("logout successful...");
     navigate("/");
     window.location.reload();
   };
