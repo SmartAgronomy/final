@@ -25,9 +25,9 @@ router.post('/', verifyToken,  async (req, res) => {
     categoryId
   );
   if (result.success) {
-    res.status(201).json({ message: result.message });
+    res.status(200).json({ message: result.message });
   } else {
-    res.status(500).json({ message: result.message });
+    res.status(404).json({ message: result.message });
   }
 });
 
@@ -60,22 +60,4 @@ module.exports = router;
 
 
 
-// const express = require('express');
-// const productController = require('../controller/productController');
-// const { verifyToken } = require('../middlewares/authuser');
 
-// const router = express.Router();
-
-// // Route to get all products
-// router.get('/', productController.getProducts);
-
-// // Route to add a product
-// router.post('/', verifyToken, productController.addProduct);
-
-// // Route to delete a product
-// router.delete('/:id', verifyToken, productController.deleteProduct);
-
-// // Route to edit a product
-// router.put('/:id', verifyToken, productController.editProduct);
-
-// module.exports = router;

@@ -1,4 +1,3 @@
-
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
@@ -11,7 +10,9 @@ import DialogTitle from '@mui/material/DialogTitle';
 import DialogContent from '@mui/material/DialogContent';
 import DialogActions from '@mui/material/DialogActions';
 import Button from '@mui/material/Button';
-import qr from "../Images/Scan_Now_to_Dispatch_your_Order.png"
+import QrReader from "qrcode.react"; // Import the QRCode component
+
+
 
 function Cart() {
   const navigate = useNavigate();
@@ -20,6 +21,9 @@ function Cart() {
   const [value, setValue] = useState(2);
   const [open, setOpen] = useState(false);
   const [orderPlaced, setOrderPlaced] = useState(false);
+  const [userDataJson, setQRCodeValue] = useState(""); // Store the QR code value
+  const [QRCodeValue, setScannedData] = useState("");
+const [isQRCodeScanned, setIsQRCodeScanned] = useState(false);
 
   const handleOpenPopup = () => {
     setOpen(true);
@@ -132,14 +136,52 @@ function Cart() {
     return total;
   };
 
-  const handleRentAllProducts = () => {
-    // Place the order logic here
-    // Show order placed message after 5 seconds
-    setTimeout(() => {
-      setOrderPlaced(true);
-    }, 5000);
+
+
+  const handleScanQRCode = (data) => {
+    if (data) {
+      setScannedData(data);
+    } else {
+      setScannedData(""); // No QR code data scanned
+    }
+  };
+  
+  const handleErrorQRCode = (error) => {
+    console.log("QR code scanning error: ", error);
   };
 
+  const handleMakePayment = () => {  
+    // Get the product details
+    const products = data.map((product) => ({
+      productName: product.productName,
+      quantity: product.quantity,
+      amount: product.amount,
+    }));
+  
+    // Combine username and product details
+    const userData = {
+      products
+    };
+  
+    // Convert the user data to JSON string
+    const userDataJson = JSON.stringify(userData);
+  
+    // Set the QR code value
+    setQRCodeValue(userDataJson);
+  
+    // Place the order logic here
+    setTimeout(() => {
+      setOrderPlaced(true);
+    });
+  
+
+      setTimeout(() => {
+        navigate("/transactionsuccess");
+      }, 3000);
+    
+  };
+  
+  
   return (
     <div className="cart-overlay">
       <div className="cart-container">
@@ -186,9 +228,7 @@ function Cart() {
                   <p>
                     <b> Free Shipment..!</b>
                   </p>
-                  <button>
-                    Rent Now
-                  </button>
+                  <Button onClick={handleMakePayment}>Rent Now</Button>
                 </div>
                 <div className="quantity">
                   <button class="decrease" onClick={() => handleDecreaseQuantity(product._id)}>-</button>
@@ -209,8 +249,14 @@ function Cart() {
           <DialogContent>
             {orderPlaced ? (
               <div>
-                <p>Order Placed Successfully!</p>
-                <p>Please wait while we process your order.</p>
+                <h3>TOTAL= ₹{calculateTotalAmount()} Only/-</h3>
+              <QrReader
+                delay={300}
+                onError={handleErrorQRCode}
+                onScan={handleScanQRCode}
+                value={QRCodeValue}
+              />
+
               </div>
             ) : (
               <div>
@@ -224,15 +270,14 @@ function Cart() {
                     </p>
                   </div>
                 ))}
-                <img src={qr} alt="QR Code" />
               </div>
             )}
           </DialogContent>
           <DialogActions>
             {!orderPlaced ? (
-              <Button onClick={handleRentAllProducts}>Rent Now</Button>
+              <Button onClick={handleMakePayment}>Make Payment</Button>
             ) : (
-              <Button disabled>Processing...</Button>
+              <></>
             )}
             <Button onClick={handleClosePopup}>Close</Button>
           </DialogActions>

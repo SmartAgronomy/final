@@ -82,11 +82,15 @@ function ProductList() {
             window.alert("Product added to cart successfully.");
             window.location.reload(); // Refresh the page
           } 
+         
         })
         .catch((err) => {
           console.log(err, "30");
-          window.alert("Product is already present in your cart. Please place an order.");
-          navigate("/cart");
+         
+            window.alert("Product is already present in your cart. Please place an order.");
+            navigate("/cart");
+
+     
         });
     } catch (error) {
       console.log(error, "Error occurred while making the request.");

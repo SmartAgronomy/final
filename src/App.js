@@ -17,6 +17,7 @@ import AddProducts from "./Components/admin-header/addProducts"
 import AddCategory from "./Components/admin-header/addCategory"
 import ViewCategories from "./Components/admin-header/viewCategories"
 import ViewProducts from "./Components/admin-header/viewProducts"
+import TransactionSuccess from "./Components/pages/transactionsuccess";
 
 function App(cartItems, setCartItems) {
   return (
@@ -42,6 +43,7 @@ function App(cartItems, setCartItems) {
           <Route path="admin/add_categories" element={<AddCategory/>}></Route>
           <Route path="view_categories" element={<ViewCategories/>}></Route>
           <Route path="view_products" element={<ViewProducts/>}></Route>
+          <Route path="transactionsuccess" element={<TransactionSuccess/>}></Route>
 
           
       </Routes>

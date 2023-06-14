@@ -29,4 +29,15 @@ router.post('/', async (req, res) => {
   }
 });
 
+router.delete('/:id',  async (req, res) => {
+  const categoryId = req.params.id;
+
+  const result = await categoryController.deleteCategory(categoryId);
+  if (result.success) {
+    res.status(200).json({ message: result.message });
+  } else {
+    res.status(500).json({ message: result.message });
+  }
+});
+
 module.exports = router;

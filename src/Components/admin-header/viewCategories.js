@@ -23,6 +23,20 @@ function ViewCategories(){
         }
       };
 
+      const handleDeleteCategory = async (categoryId) => {
+        try {
+          const token = cookies.access_token; // Retrieve the JWT token from cookies
+          await axios.delete(`http://localhost:8080/admin/categories/${categoryId}`, {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          });
+          fetchCategories();
+        } catch (error) {
+          console.error('Failed to delete product:', error);
+        }
+      };
+
     return(
         <div>
           <AdminBar />
@@ -40,6 +54,9 @@ function ViewCategories(){
       <tr>
            <td>{category.categoryName}</td>
            <td> {category._id}</td>
+           <button onClick={() => handleDeleteCategory(category._id)}>
+        Delete
+      </button>
       </tr>
       </>
     ))}
