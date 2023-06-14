@@ -1,0 +1,113 @@
+.body{
+   background-color: rgb(255, 255, 255);
+}
+h1{
+    text-align:center;
+    justify-content: center;
+    align-items: center;
+    color:rgb(0, 0, 0);
+}
+.center-img img{
+    height:70vh;
+    width:80%;
+
+}
+.center-img{
+    position:static;
+    margin-top:140px;
+    margin-left:150px;
+}
+
+.center-img h1{
+    color:rgb(255, 255, 255);
+    font-family:'Times New Roman', Times, serif;
+    font-size:70px;
+    margin-top:-280px;
+    margin-left: -300px;;
+    position: static;
+    font-weight: 600;
+
+}
+.about-info{
+    margin-top: -400px;
+}
+.about{
+    position:absolute;
+    margin-top:42%;
+    text-align:left;
+    padding:0px 150px;
+}
+.about h1{
+    text-align:left;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color:rgb(3, 78, 0);
+    margin-top:6%;
+    text-decoration: underline;
+   
+}
+.about p{
+    text-align:left;
+    font-family:'Poppins' sans-serif;
+    color:rgb(102, 101, 101);
+    font-size:17px;
+}
+.about h4{
+    position:absolute;
+    text-align:left;
+    font-family:'Poppins' sans-serif;
+    color:rgb(19, 126, 0);
+    font-size:17px;
+    margin-top:2%;
+    margin-left:0px;
+}
+.vision{
+    position:absolute;
+    margin-top:65%;
+    text-align:left;
+    padding:0px 150px;
+}
+.vision h1{
+    text-align:left;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color:rgb(35, 35, 35);
+    font-size:25px;
+}
+.vision p{
+    text-align:left;
+    font-family: 'Poppins' sans-serif;
+    color:rgb(102,101, 101);
+    font-size:17px;
+}
+
+.mision{
+    position:absolute;
+    margin-top:78%;
+    text-align:left;
+    padding:0px 150px;
+}
+.mision h1{
+    text-align:left;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color:rgb(35, 35, 35);
+    font-size:25px;
+}
+.mision p{
+    text-align:left;
+    font-family: 'Poppins', sans-serif;
+    color:rgb(102, 101, 101);
+    font-size:17px;
+}
+.more-info{
+    position: absolute;
+    margin-top:94%;
+    text-align:left;
+    padding:0px 150px;
+}
+.more-info p{
+    text-align:left;
+    font-family: 'Poppins', sans-serif;
+    color:rgb(102, 101, 101);
+    font-size:17px;
+}
+
+

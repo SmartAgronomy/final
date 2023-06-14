@@ -1,0 +1,35 @@
+.main-heading{
+   display:grid;
+   grid-template-areas: "head head head"
+                        "side content content";
+ }
+ .question-heading{
+    margin-top: 30px;;
+    font-family:fantasy;
+    grid-area:head;
+    font-size: 33px;
+    letter-spacing: 2px;;
+    text-decoration: underline;
+    color:rgb(0, 0, 0);
+ }
+ .questions{
+    grid-area:content;
+    margin-top: 50px;
+    margin-left:-40px;
+    width:700px;
+
+ }
+ .FAQ-logo{
+    height:10vh;
+    position: absolute;
+    border-radius: 50%;;
+    margin-top:20px;
+    margin-left:30%;
+
+ }
+ .FAQ-back{
+    height:500px;;
+    width:600px;
+    margin-top:50px;
+
+ }
