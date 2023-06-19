@@ -20,8 +20,18 @@ const addCategory = async (categoryName) => {
   }
 };
 
+const deleteCategory = async (categoryId) => {
+  try {
+    await Category.findByIdAndDelete(categoryId);
+    return { success: true, message: 'Product deleted successfully' };
+  } catch (error) {
+    return { success: false, message: 'Failed to delete product' };
+  }
+};
+
 
 module.exports = {
   getCategories,
   addCategory,
+  deleteCategory
 };

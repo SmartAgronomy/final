@@ -94,7 +94,7 @@
         
         <input type="email"  name="email"  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" placeholder='E-mail' onChange={handleemailChange} value={email} />
         <div className="password-wrapper">
-          <input type={showPassword ? "text" : "password"} title=" Password must in order of at least One Uppercase and one lowercase and one special characeter and numbers and more than 8 characters" name="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" onChange={handlePasswordChange} value={password} placeholder="Password" id="pass"/>
+          <input type={showPassword ? "text" : "password"} name="password" onChange={handlePasswordChange} value={password} placeholder="Password" id="pass"/>
           <div class="login-eye-toggle" onClick={() => setshowPassword(!showPassword)}>
             {showPassword ? <img class="hide-password" alt="Eye icon(opened)" src={eyeOpenIcon} /> : <img class="hide-password" alt="Eue-icon(closed)" src={eyeCloseIcon} />}
           </div>

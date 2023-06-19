@@ -1,4 +1,3 @@
-
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
@@ -11,15 +10,22 @@ import DialogTitle from '@mui/material/DialogTitle';
 import DialogContent from '@mui/material/DialogContent';
 import DialogActions from '@mui/material/DialogActions';
 import Button from '@mui/material/Button';
-import qr from "../Images/qrcode.png"
+import QrReader from "qrcode.react"; // Import the QRCode component
+import DialogContentText from '@mui/material/DialogContentText';
+
+
 
 function Cart() {
   const navigate = useNavigate();
   const [data, setData] = useState([]);
   const [cookies] = useCookies(["access_token"]);
-  const [value, setValue] = useState(5);
+  const [value, setValue] = useState(2);
   const [open, setOpen] = useState(false);
+  const [agreeOpen, setAgreeOpen] = useState(false);
   const [orderPlaced, setOrderPlaced] = useState(false);
+  const [userDataJson, setQRCodeValue] = useState(""); // Store the QR code value
+  const [QRCodeValue, setScannedData] = useState("");
+const [isQRCodeScanned, setIsQRCodeScanned] = useState(false);
 
   const handleOpenPopup = () => {
     setOpen(true);
@@ -28,7 +34,13 @@ function Cart() {
   const handleClosePopup = () => {
     setOpen(false);
   };
+  const handleAgreeOpenPopup = () => {
+    setAgreeOpen(true);
+  };
 
+  const handleAgreeClosePopup = () => {
+    setAgreeOpen(false);
+  };
   useEffect(() => {
     const userId = localStorage.getItem("userID");
     const token = cookies.access_token;
@@ -133,14 +145,52 @@ function Cart() {
     return total;
   };
 
-  const handleRentAllProducts = () => {
-    // Place the order logic here
-    // Show order placed message after 5 seconds
-    setTimeout(() => {
-      setOrderPlaced(true);
-    }, 5000);
+
+
+  const handleScanQRCode = (data) => {
+    if (data) {
+      setScannedData(data);
+    } else {
+      setScannedData(""); // No QR code data scanned
+    }
+  };
+  
+  const handleErrorQRCode = (error) => {
+    console.log("QR code scanning error: ", error);
   };
 
+  const handleMakePayment = () => {  
+    // Get the product details
+    const products = data.map((product) => ({
+      productName: product.productName,
+      quantity: product.quantity,
+      amount: product.amount,
+    }));
+  
+    // Combine username and product details
+    const userData = {
+      products
+    };
+  
+    // Convert the user data to JSON string
+    const userDataJson = JSON.stringify(userData);
+  
+    // Set the QR code value
+    setQRCodeValue(userDataJson);
+  
+    // Place the order logic here
+    setTimeout(() => {
+      setOrderPlaced(true);
+    });
+  
+
+      setTimeout(() => {
+        navigate("/transactionsuccess");
+      }, 3000);
+    
+  };
+  
+  
   return (
     <div className="cart-overlay">
       <div className="cart-container">
@@ -159,7 +209,7 @@ function Cart() {
               />
               <div className="product-details">
                 <p>
-                  {product.productName} in Category ({product.category.categoryName})<br></br>
+                  {product.productName} in Category ({product.goryName})<br></br>
                 </p>
                 <Box
                   sx={{
@@ -187,9 +237,7 @@ function Cart() {
                   <p>
                     <b> Free Shipment..!</b>
                   </p>
-                  <button>
-                    Rent Now
-                  </button>
+                  <Button onClick={handleMakePayment}>Rent Now</Button>
                 </div>
                 <div className="quantity">
                   <button class="decrease" onClick={() => handleDecreaseQuantity(product._id)}>-</button>
@@ -209,34 +257,69 @@ function Cart() {
           <DialogTitle>Rent All Products</DialogTitle>
           <DialogContent>
             {orderPlaced ? (
-              <div className="order-placed-successfully">
-                <p>Equipments Rented Successfully..!</p>
-                <span>Thank you for your Order... &#128522;</span>
+              <div>
+                <h3>TOTAL= ₹{calculateTotalAmount()} Only/-</h3>
+              <QrReader
+                delay={300}
+                onError={handleErrorQRCode}
+                onScan={handleScanQRCode}
+                value={QRCodeValue}
+              />
+
               </div>
             ) : (
-              <div className="order-summary">
-                <h4>Order Summary:</h4>
+              <div>
+                <h3>Order Summary:</h3>
                 {data.map((product) => (
                   <div key={product._id}>
                     <p>
-                      <b>Product: </b> {product.productName}<br />
-                     <b>Quantity: </b> {product.quantity}<br />
-                      <b>Amount: </b> {product.amount * product.quantity}
+                      Product: {product.productName}<br />
+                      Quantity: {product.quantity}<br />
+                      Amount: {product.amount * product.quantity}
                     </p>
                   </div>
                 ))}
-                <img src={qr} alt="QR Code" /><br></br><br></br>
-                <span>Scan Now to Dispatch Your Order....</span>
               </div>
             )}
           </DialogContent>
           <DialogActions>
+          
             {!orderPlaced ? (
-              <Button className="rent-now-in-rentall-btn" onClick={handleRentAllProducts}>Rent Now</Button>
+              <>
+              <Button onClick={handleAgreeOpenPopup}>Make Payment</Button>
+            <Dialog
+              open={agreeOpen}
+              onClose={handleAgreeClosePopup}
+            >
+              <DialogTitle id="alert-dialog-title">
+                Rental Terms and Conditions
+              </DialogTitle>
+              <DialogContent>
+                <DialogContentText id="alert-dialog-description">
+                By accessing and using our farm equipment rental service,
+                 you agree to the following terms and conditions. <br></br>
+                 * The rental agreement is formed directly between you and 
+                  the Owner of the equipment. Don't worry about the equipment responsibility or liability.<br></br>
+                 * While we strive to provide accurate information, we  guarantee 
+                  the availability or accuracy of equipment listings. <br></br>
+                  * You are responsible 
+                  for verifying suitability, complying with laws, and ensuring your ability 
+                  to operate the equipment safely and for obtaining 
+                  insurance and hold the Administrators harmless from any claims.
+                </DialogContentText>
+              </DialogContent>
+              <DialogActions>
+                <Button onClick={handleAgreeClosePopup}>Close</Button>
+                <Button onClick={handleMakePayment} autoFocus>
+                  Agree and Continue
+                </Button>
+              </DialogActions>
+            </Dialog>
+            </>
             ) : (
-              <div></div>
+              <></>
             )}
-            <Button className="cancel-btn" onClick={handleClosePopup}>Close</Button>
+            <Button onClick={handleClosePopup}>Close</Button>
           </DialogActions>
         </Dialog>
       </div>

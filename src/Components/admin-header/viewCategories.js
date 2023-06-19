@@ -3,6 +3,7 @@ import axios from 'axios';
 import "../pages/styles/admin-events.css"
 import { useCookies } from "react-cookie";
 import AdminBar from './admin-header';
+import DeleteIcon from '@mui/icons-material/Delete';
 
 function ViewCategories(){
 
@@ -23,6 +24,21 @@ function ViewCategories(){
         }
       };
 
+      const handleDeleteCategory = async (categoryId) => {
+        try {
+          const token = cookies.access_token; // Retrieve the JWT token from cookies
+          await axios.delete(`http://localhost:8080/admin/categories/${categoryId}`, {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          });
+          alert("Category Deleted Successfully")
+          fetchCategories();
+        } catch (error) {
+          console.error('Failed to delete product:', error);
+        }
+      };
+
     return(
         <div>
           <AdminBar />
@@ -33,6 +49,7 @@ function ViewCategories(){
     <tr>
        <th>Category Name</th>
        <th>Category ID</th>
+       <th></th>
       </tr>
     {categories.map((category) => (
       <>
@@ -40,6 +57,9 @@ function ViewCategories(){
       <tr>
            <td>{category.categoryName}</td>
            <td> {category._id}</td>
+           <DeleteIcon className="delete-categories" onClick={() => handleDeleteCategory(category._id)}>
+        Delete
+      </DeleteIcon>
       </tr>
       </>
     ))}

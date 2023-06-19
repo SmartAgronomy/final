@@ -60,46 +60,14 @@ useEffect(() => {
       setProductImageLocation('');
       setSelectedCategory('');
       fetchProducts();
+      alert("Product Added Successfully")
     } catch (error) {
       console.error('Failed to add product:', error);
+      alert(" An Error occured while adding products, Please Fill All the input fields")
     }
   };
-  
-  const handleDeleteProduct = async (productId) => {
-    try {
-      const token = cookies.access_token; // Retrieve the JWT token from cookies
-      await axios.delete(`http://localhost:8080/admin/products/${productId}`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
-      fetchProducts();
-    } catch (error) {
-      console.error('Failed to delete product:', error);
-    }
-  };
-  
-  const handleAddCategory = async (e) => {
-    e.preventDefault();
-  
-    try {
-      const token = cookies.access_token; // Retrieve the JWT token from cookies
-      await axios.post(
-        'http://localhost:8080/admin/categories',{
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-          categoryName,
-        },
-      );
-      console.log('Category added successfully');
-      setCategoryName('');
-      setCategoryAdded(true);
-      fetchCategories();
-    } catch (error) {
-      console.error('Failed to add category:', error);
-    }
-  };
+    
+
   
   
   const fetchCategories = async () => {
