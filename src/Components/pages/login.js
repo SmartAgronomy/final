@@ -105,7 +105,7 @@
 
         
         <div class="not-registered">
-        Not registered<Link to= "/signup">Register Now! </Link>
+        Not a Member?<Link to= "/signup">  Jion Us </Link>
         </div>
       </form>
       <div>

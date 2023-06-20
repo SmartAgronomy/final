@@ -1,8 +1,14 @@
-.cart img {
+.cart .img {
   width: 35px;
   /* Adjust the width as needed */
   height: 35px;
   /* Adjust the height as needed */
+  color:white;
+}
+.cart .img:hover{
+  color:azure;
+
+  
 }
 
 .cart h3 {

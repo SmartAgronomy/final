@@ -233,8 +233,9 @@ const [isQRCodeScanned, setIsQRCodeScanned] = useState(false);
               <div className="product-details">
                 
                 <p>
-                  {product.productName} in Category ({product.goryName})<br></br>
+                  {product.productName} 
                 </p>
+                <span><b>Product Category:</b> {product.category.categoryName}</span>
                 <Box
                   sx={{
                     '& > legend': { mt: 2 },
@@ -366,7 +367,7 @@ const [isQRCodeScanned, setIsQRCodeScanned] = useState(false);
                   the availability or accuracy of equipment listings. <br></br>
                   * You are responsible 
                   for verifying suitability, complying with laws, and ensuring your ability 
-                  to operate the equipment safely and for obtaining 
+                  to operate the equipment safely and for obtaining
                   insurance and hold the Administrators harmless from any claims.
                 </DialogContentText>
               

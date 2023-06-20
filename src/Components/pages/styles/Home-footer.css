@@ -107,13 +107,12 @@
     margin-top:-1px;
     color:rgb(47, 255, 0);;
 }
-.social-media img{
-    height:5vh;
-    margin-right:15px;
-    border-radius:50%;
-    cursor:pointer;
-}
 .social-media{
-    margin-left:-900px
+    margin-left:-900px;
+    justify-content: space-around;
+    
+}
+.social-media {
+    margin-right:100px;
 }
 

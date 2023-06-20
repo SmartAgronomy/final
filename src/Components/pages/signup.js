@@ -170,7 +170,7 @@ function SignupUpdated() {
           <button class="bttn" id="btn"  type="submit" onClick={ handleSubmit && validateForm}> Sign Up</button><br></br><br></br>
           </div>
           <div class="already-registered">
-          Already Signup<Link to="/signin">Click here to login</Link>
+          Already a Member?<Link to="/signin">  Sign In</Link>
           </div>
       </form>
       <div>
