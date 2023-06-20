@@ -13,6 +13,15 @@ import "../pages/styles/Home-footer.css"
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { useEffect } from 'react';
+import ContactSupportIcon from '@mui/icons-material/ContactSupport';
+import MiscellaneousServicesIcon from '@mui/icons-material/MiscellaneousServices';
+import IconButton from '@mui/material/IconButton';
+import Tooltip from '@mui/material/Tooltip';
+import FacebookIcon from '@mui/icons-material/Facebook';
+import TwitterIcon from '@mui/icons-material/Twitter';
+import InstagramIcon from '@mui/icons-material/Instagram';
+import YouTubeIcon from '@mui/icons-material/YouTube';
+import LinkedInIcon from '@mui/icons-material/LinkedIn';
 function Footer(){
   useEffect(()=>{
      AOS.init({duration :2000})
@@ -25,11 +34,23 @@ function Footer(){
           <h1 class='agro'>Agro<h1 class="nomy">Nomy</h1></h1>
             <p>Our rental equipment helps businesses of<br></br>  all sizes control costs and gain the flexibility <br></br>to take on larger jobs and a broader range<br></br>  of applications.Its smartest way to track and<br></br> manage the farm equipment on rent from us to you. </p>
             <div class="social-media">
-              <img src={facebook} />
-              <img src={twitter} />
-              <img src={instagram} />
-              <img src={youtube} />
-              <img src={linked_in} />
+              <Tooltip title="facebook" arrow>
+                <FacebookIcon sx={{color:"blue",marginRight:"20px"}}/>
+              </Tooltip>
+              <Tooltip title="Twitter" arrow>
+                <TwitterIcon sx={{color:"skyblue",marginRight:"20px"}}/>
+              </Tooltip>
+              <Tooltip title="Instagram" arrow>
+                <InstagramIcon sx={{color:"orange",marginRight:"20px"}}/>
+              </Tooltip>
+              <Tooltip title="Youtube" arrow>
+                <YouTubeIcon sx={{color:"red",marginRight:"20px"}}/>
+              </Tooltip>
+              <Tooltip title="Linked in" arrow>
+                <LinkedInIcon sx={{color:"skyblue",marginRight:"20px"}}/>
+              </Tooltip>
+              
+             
             </div>
         </div>
         <div class="footer-center">
@@ -46,7 +67,7 @@ function Footer(){
           </div>
 
           <div class='services'>
-            <h2>Services</h2>
+            <h2><MiscellaneousServicesIcon /> Services</h2>
            <ul>
                <a href="#" >Rental</a><br></br>
                <a href="#" >Delivery and pickup</a> <br></br>
@@ -59,7 +80,7 @@ function Footer(){
             </ul>
           </div>
           <div class='contact-us'>
-            <h2>Contact Us</h2>
+            <h2> < ContactSupportIcon />Contact Us</h2>
             <Link to="/contact" ><img src={location}/><span>www.digitalizedSmartAgronomy.com</span></Link><br></br>
             <Link to="/contact" ><img src={email}/><span>agronomymaster60@gmail.com</span></Link><br></br>
             <Link to="/contact" a><img src={contact}/><span>+919380019642<br></br>

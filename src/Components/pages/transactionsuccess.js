@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { CircularProgress } from "@mui/material";
 import { Link } from "react-router-dom";
+import "../pages/styles/transactionSuccess.css"
 
 function TransactionSuccess() {
   const [loading, setLoading] = useState(true);
@@ -19,15 +20,16 @@ function TransactionSuccess() {
   return (
     <div className="centered-container">
       {loading ? (
-        <div>
-          <CircularProgress />
-          <p>Please wait while we process your order...</p>
+        <div className="order-processing">
+          <CircularProgress sx={{ml:'45%'}}/>
+          <p>Please wait while we processing your order...</p>
         </div>
       ) : (
-        <div>
-          <h1>Transaction Successful!</h1>
+        <div className="order-confirmed">
+          <h2>Transaction Successful!</h2>
           <p>Your payment has been processed successfully.</p>
-          <Link to="/cart">Back to Cart</Link>
+          Thank you for Your order..!<br></br><br></br>
+         <Link to="/cart"><span>OK</span></Link>
         </div>
       )}
     </div>

@@ -1,3 +1,7 @@
+
+body{
+  background-color: white;
+}
 .home-page {
   display: flex;
 }
@@ -5,12 +9,12 @@
 .cart-overlay {
   position: fixed;
   top: 10px;
-  width: 90%;
+  width: 70%;
   left:0;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 999;
-  margin-left:5%;
+  margin-left:15%;
 }
 
 .cart-container {
@@ -148,11 +152,11 @@ color:white
   font-weight: 600;
 }
 .quantity .increase{
-  background-color: green;
+  background-color: rgb(35, 224, 221);
   border: none;
 }
 .quantity .decrease{
-  background-color: red;
+  background-color: rgb(243, 191, 36);
   border:none;
 }
 .qr-popup{

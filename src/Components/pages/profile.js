@@ -5,6 +5,8 @@ import { useCookies } from "react-cookie";
 import "./styles/profile.css";
 import { Link } from "react-router-dom";
 import profile_backTo_Home from "../Images/profile-backTo-Home.png";
+import Header from "../dashboard/header";
+import profile_img from "../Images/ppppp.png"
 
 function Profile() {
   const [profileData, setProfileData] = useState(null);
@@ -81,30 +83,32 @@ function Profile() {
 
   return (
     <div className="profile">
-      <div className="container">
-        <div className="profile-container">
+      <Header />
+      <div className="profile-container">
         <div className="profile-heading">
-        <h1>Manage your Account</h1>
+        <h1>Profile Details</h1>
       </div>
           {profileData && (
             <div className="profile-content">
               
               <div className="profile-details">
-                {!editMode ? (
-                  <h6>
-                    {profileData.fname} {profileData.lname}
-                  </h6>
-                ) : (<>
-                <p className="edit-para">You can edit your firstname, lastname and mobile number only.</p>
+                <table>
+                        {!editMode ? (
+                          <tr><td>
+                          Name: {profileData.fname} {profileData.lname}
+                        </td></tr>
                   
-                  <input
+                ) : (<>
+                <tr><td>You can edit your Name and mobile number only</td></tr>
+                  <tr><td> <input
                   className="edit-fname"
                     type="text"
                     name="fname"
                     placeholder="First Name *"
                     value={editedProfileData.fname}
                     onChange={handleInputChange}
-                  />             
+                  />      </td></tr>
+                        
                   </>
                 )}
                    {!editMode ? (
@@ -122,11 +126,13 @@ function Profile() {
                 />
                                 
                 )}
-                <span>{profileData.email}</span>
+                <tr><td>Email: {profileData.email}</td></tr>
+                
                 <br />
                 
                 {!editMode ? (
-                  <span>Contact No: {profileData.mobile}</span>
+                  <tr><td>Contact No: {profileData.mobile}</td></tr>
+                  
                 ) : (
                   <input
                   className="edit-mobile"
@@ -138,16 +144,14 @@ function Profile() {
                   />
                 )}
                 <br />
-                <span>
-                  Dispatch Location: {profileData.country} {profileData.state}{" "}
-                  {profileData.city}
-                </span>
-                <br />
-                <span>Role: {profileData.role === 1 ? "admin" : "user"}</span>
+                <tr><td>Dispatch Location: {profileData.country} {profileData.state}{" "}
+                  {profileData.city}</td></tr>
 
+                <br />
+                <tr><td>Role: {profileData.role === 1 ? "admin" : "user"}</td></tr> 
                 <div className="dashboard">
                   {!editMode ? (
-                    <button class="update-profile-btn"onClick={handleEditClick}>Update Profile</button>
+                    <button class="update-profile-btn" onClick={handleEditClick}>Update Profile</button>
                   ) : (
                     <>
                     
@@ -158,13 +162,17 @@ function Profile() {
                     </>
                   )}
                 </div>
+                </table>
               </div>
-              <div className="profile-img">
+              {/* <div className="profile-img">
                 <span>{getInitialLetter()}</span>
+              </div> */}
+              <div className="ppp-img">
+                <img src={profile_img} />
               </div>
             </div>
           )}
-        </div>
+        
         <Link to="/">
           <div className="profile-bac">
             <img class="profile_backTo_Home" src={profile_backTo_Home} />

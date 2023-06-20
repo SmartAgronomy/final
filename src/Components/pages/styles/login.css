@@ -24,7 +24,7 @@
     width:290px;
     margin-bottom: 30px;
     border-radius: 10px;
-    border:2px solid rgb(122, 122, 122);
+    border:2px solid rgb(190, 190, 190);
     
 }
 .login-form input[type="email"]:invalid, .login-form input[type="checkbox"]:invalid{
@@ -143,7 +143,7 @@
     background-color: rgba(253, 209, 209, 0.271);
     margin-right: 60px;
     border-radius: 10px;
-padding: 5px 10px;
+   padding: 5px 10px;
     
 }
 

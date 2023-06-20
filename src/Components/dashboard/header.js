@@ -28,8 +28,6 @@ import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import Divider from '@mui/material/Divider';
-import IconButton from '@mui/material/IconButton';
-import Tooltip from '@mui/material/Tooltip';
 import PersonAdd from '@mui/icons-material/PersonAdd';
 import Settings from '@mui/icons-material/Settings';
 import Logout from '@mui/icons-material/Logout';
@@ -38,6 +36,14 @@ import axios from "axios";
 import { useEffect } from "react";
 import Website_logo from "../Images/website-logo-new2.png";
 import debounce from "lodash/debounce";
+import HowToRegIcon from '@mui/icons-material/HowToReg';
+import LockOpenIcon from '@mui/icons-material/LockOpen';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import IconButton from '@mui/material/IconButton';
+import Tooltip from '@mui/material/Tooltip';
+import ExitToAppIcon from '@mui/icons-material/ExitToApp';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+
 
 
 
@@ -164,8 +170,12 @@ function Header() {
             ) : (
               <>
               <Link to="/cart">
-                <img src={cart} />
+                <Tooltip title="Cart">
+                  <IconButton>
+                <ShoppingCartIcon className="img"/>
                 {cartCount > 0 && <h3 class="cart-notification">{cartCount}</h3>}
+                </IconButton>
+                </Tooltip>
               </Link>
                 
               </>
@@ -179,11 +189,11 @@ function Header() {
 
             {adminRouter()}
 
-            <li class="active-root"><NavLink to="/" activeClassName="active-link">Home</NavLink></li>
+            <li class="active-root"><NavLink to="/" activeClassName="active-link"> Home</NavLink></li>
 
-            <li><NavLink to="/blogs">Blogs</NavLink>
+            <li><NavLink to="/blogs"> Blogs</NavLink>
             </li>
-            <li><NavLink to="/products">Products</NavLink>
+            <li><NavLink to="/products"> Products</NavLink>
 
 
             </li>
@@ -199,12 +209,17 @@ function Header() {
           <div class="button">
             {!cookies.access_token ? (
               <>
+              <div className="Sign-in-up">
                 <Link to="/signin">
-                  <button>Sign in</button>
+                
+                  <button> <LockOpenIcon/>  Sign in</button>
+                  
                 </Link>
                 <Link to="/signup">
-                  <button>Sign Up</button>
+                  <button> <HowToRegIcon />  Sign Up</button>
                 </Link>
+                </div>
+                <div className="Account-menu">
                 <Box sx={{ display: 'block', alignItems: 'right', textAlign: 'left ', marginTop: '-43px', marginLeft: '170px', transform: 'none' }}>
                   <Tooltip title="Manage Profile">
                     <IconButton
@@ -219,6 +234,7 @@ function Header() {
                     </IconButton>
                   </Tooltip>
                 </Box>
+                </div>
                 <Menu class="menu"
                   anchorEl={anchorEl}
                   id="account-menu"
@@ -273,13 +289,13 @@ function Header() {
               </>
             ) : (
               <>
-                <img class="logout-logo" src={logout_img} />
-                <button onClick={logout}>Logout</button>
+                
+                <button onClick={logout}><ExitToAppIcon/> Logout</button>
 
-                <img class="profile-pic" src={profile_img} />
+                
                 <Link to="/profile">
-                  <button >My Account</button>
-                  <span class="caret" ></span>
+                  <button ><AccountCircleIcon />  Profile</button>
+                  
                 </Link>
               </>
             )}
