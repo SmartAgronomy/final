@@ -38,25 +38,34 @@ function SignupUpdated() {
 
 
 
-  const handleSubmit = async (e)=>{
 
+  const handleSubmit = async (e) => {
     e.preventDefault();
-
-    const response = await fetch('http://localhost:8080/api/signup',{
-      method:'POST',
-      body:JSON.stringify(form),
-      headers:{
-        'Content-Type':'application/json'
+  
+    try {
+      const response = await fetch('http://localhost:8080/api/signup', {
+        method: 'POST',
+        body: JSON.stringify(form),
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      });
+      if(response.status === 400){
+        alert("Given email is already registered");
       }
-    })
-    const data = await response.json();
-    if(data.error){
-      alert("Givan email is already registered")
+      if(response.data === 200){
+        alert("you Successfully Login...");
+      }
+
+      
+  
+      const data = await response.json();
+    } catch (error) {
+      console.error(error);
+      // Handle error appropriately, such as showing an error message to the user
     }
-    
-    
-    
-  }
+  };
+  
 
   const getUsers = async ()=>{
     const response = await fetch('http://localhost:8080/api/signup',{
@@ -78,11 +87,9 @@ function SignupUpdated() {
       alert("Please Fill all the details Correctlly below to Register")
     }
 
-  
-    if (password !== confirmPassword) {
-      alert("Passwords do not match!");
+    if (password !== confirmPassword){
+      alert("thikala");
     }
-    
 
 
   }
@@ -160,7 +167,7 @@ function SignupUpdated() {
 
           <button class="bttn"   type="submit" > Sign Up</button>
           <div class="signin-btn">
-          <button class="bttn" id="btn"  type="submit" onClick={openPopup && validateForm}> Sign Up</button><br></br><br></br>
+          <button class="bttn" id="btn"  type="submit" onClick={ handleSubmit && validateForm}> Sign Up</button><br></br><br></br>
           </div>
           <div class="already-registered">
           Already Signup<Link to="/signin">Click here to login</Link>
