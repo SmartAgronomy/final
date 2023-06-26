@@ -3,12 +3,13 @@
   /* Adjust the width as needed */
   height: 35px;
   /* Adjust the height as needed */
-  color:white;
+  color: white;
 }
-.cart .img:hover{
-  color:azure;
 
-  
+.cart .img:hover {
+  color: azure;
+
+
 }
 
 .cart h3 {

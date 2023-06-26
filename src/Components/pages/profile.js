@@ -1,12 +1,9 @@
-
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useCookies } from "react-cookie";
 import "./styles/profile.css";
 import { Link } from "react-router-dom";
-import profile_backTo_Home from "../Images/profile-backTo-Home.png";
 import Header from "../dashboard/header";
-import profile_img from "../Images/ppppp.png"
 
 function Profile() {
   const [profileData, setProfileData] = useState(null);
@@ -61,7 +58,7 @@ function Profile() {
       );
       setProfileData(response.data);
       setEditMode(false);
-       alert("Profile updated successfully!");
+      alert("Profile updated successfully!");
     } catch (error) {
       console.error(error);
     }
@@ -86,56 +83,56 @@ function Profile() {
       <Header />
       <div className="profile-container">
         <div className="profile-heading">
-        <h1>Profile Details</h1>
-      </div>
-          {profileData && (
-            <div className="profile-content">
-              
-              <div className="profile-details">
-                <table>
-                        {!editMode ? (
-                          <tr><td>
-                          Name: {profileData.fname} {profileData.lname}
-                        </td></tr>
-                  
+          <h1>Profile Details</h1>
+        </div>
+        {profileData && (
+          <div className="profile-content">
+
+            <div className="profile-details">
+              <table>
+                {!editMode ? (
+                  <tr><td>
+                    Name: {profileData.fname} {profileData.lname}
+                  </td></tr>
+
                 ) : (<>
-                <tr><td>You can edit your Name and mobile number only</td></tr>
+                  <tr><td><b>You can edit your Name and mobile number only</b></td></tr>
                   <tr><td> <input
-                  className="edit-fname"
+                    className="edit-fname"
                     type="text"
                     name="fname"
                     placeholder="First Name *"
                     value={editedProfileData.fname}
                     onChange={handleInputChange}
                   />      </td></tr>
-                        
-                  </>
+
+                </>
                 )}
-                   {!editMode ? (
-                  <h6>
-                    
-                  </h6>
-                ) : (                  
-                  <input
-                  className="edit-lname"
-                  placeholder="Last Name *"
-                  type="text"
-                  name="lname"
-                  value={editedProfileData.lname}
-                  onChange={handleInputChange}
-                />
-                                
-                )}
-                <tr><td>Email: {profileData.email}</td></tr>
-                
-                <br />
-                
                 {!editMode ? (
-                  <tr><td>Contact No: {profileData.mobile}</td></tr>
-                  
+                  <h6>
+
+                  </h6>
                 ) : (
                   <input
-                  className="edit-mobile"
+                    className="edit-lname"
+                    placeholder="Last Name *"
+                    type="text"
+                    name="lname"
+                    value={editedProfileData.lname}
+                    onChange={handleInputChange}
+                  />
+
+                )}
+                <tr><td>Email: {profileData.email}</td></tr>
+
+                <br />
+
+                {!editMode ? (
+                  <tr><td>Contact No: {profileData.mobile}</td></tr>
+
+                ) : (
+                  <input
+                    className="edit-mobile"
                     type="text"
                     placeholder="Mobile no *"
                     name="mobile"
@@ -148,35 +145,34 @@ function Profile() {
                   {profileData.city}</td></tr>
 
                 <br />
-                <tr><td>Role: {profileData.role === 1 ? "admin" : "user"}</td></tr> 
+                <tr><td>Role: {profileData.role === 1 ? "admin" : "user"}</td></tr>
                 <div className="dashboard">
                   {!editMode ? (
                     <button class="update-profile-btn" onClick={handleEditClick}>Update Profile</button>
                   ) : (
                     <>
-                    
+
                       <button className="save-btn" onClick={handleSaveClick}>Save</button>
                       <div className="cancel">
-                      <button onClick={() => setEditMode(false)}>Cancel</button>
+                        <button onClick={() => setEditMode(false)}>Cancel</button>
                       </div>
                     </>
                   )}
                 </div>
-                </table>
-              </div>
-              {/* <div className="profile-img">
-                <span>{getInitialLetter()}</span>
-              </div> */}
-              <div className="ppp-img">
-                <img src={profile_img} />
-              </div>
+              </table>
             </div>
-          )}
-        
+            <div className="ppp-img">
+              <span class="initial-letter">{getInitialLetter()}</span>
+            </div>
+            {/* <div className="ppp-img">
+                <img src={profile_img} />
+              </div> */}
+          </div>
+        )}
+
         <Link to="/">
           <div className="profile-bac">
-            <img class="profile_backTo_Home" src={profile_backTo_Home} />
-            <big>Back</big>
+            <h3>&#10094;</h3>
           </div>
         </Link>
       </div>

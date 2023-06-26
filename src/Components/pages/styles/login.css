@@ -1,150 +1,177 @@
-
-
-.login-form{
-  padding-top: 10px;
-  padding-bottom: 100px;
-  padding-left: 50px;
-  height:500px;
-  width:400px;
-  margin-left: 55%;
-  margin-top:5%;
-  border-top-right-radius: 20px;
-  border-bottom-right-radius: 20px;;
- box-shadow: 0px 0px 0px 2px rgb(216, 216, 216);
+.login-form {
+    padding-top: 10px;
+    padding-bottom: 100px;
+    padding-left: 50px;
+    height: 500px;
+    width: 400px;
+    margin-left: 55%;
+    margin-top: 5%;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    ;
+    box-shadow: 0px 0px 0px 2px rgb(216, 216, 216);
 }
-.login-form h1{
-    text-align:left;
-    font-size: 25px;;
+
+.login-form h1 {
+    text-align: left;
+    font-size: 25px;
+    ;
 }
-.login-form p{
+
+.login-form p {
     font-size: 13px;
 }
-.login-form input{
-    height:40px;
-    width:290px;
+
+.login-form .login-email {
+    height: 40px;
+    width: 290px;
     margin-bottom: 30px;
     border-radius: 10px;
-    border:2px solid rgb(190, 190, 190);
-    
+    border: 2px solid rgb(190, 190, 190);
 }
-.login-form input[type="email"]:invalid, .login-form input[type="checkbox"]:invalid{
-    border:3px solid red;
+.login-form .password-wrapper{
+    height: 40px;
+    width: 290px;
+    margin-bottom: 30px;
+    border-radius: 10px;
+    border: 2px solid rgb(190, 190, 190);
+}
+.login-form input{
+    height: 36px;
+    width: 248px;
+    margin-left: 5px;
+    border-radius: 10px;
+    margin-bottom: 0px;
+    border-bottom-left-radius: 0px;
+    border-top-left-radius: 0px;
+    border: none;
+    border-left: 1px solid rgb(176, 176, 176);
+    margin-top: 0px;
+}
+
+.login-form input[type="email"]:invalid,
+.login-form input[type="checkbox"]:invalid {
+    border: 3px solid red;
     animation: shake 0.2s 2;
 }
-.login-form input:invalid{
-    border:3px solid red;
+
+.login-form input:invalid {
+    border: 3px solid red;
     animation: shake 0.2s 2;
 }
+
 @keyframes shake {
-    25%{
+    25% {
         translate: 6px 0px;
     }
-    50%{
+
+    50% {
         translate: -6px 0px;
     }
-    75%{
+
+    75% {
         translate: 6px 0px;
     }
-    
+
 }
-.login-form .checkbox{
-   height:15px;
-   width:15px;
-   cursor:pointer;
-}
-.login-form span{
-    position:absolute;
-    font-size: 14px;
-}
-.login-form button{
-    height:40px;
-    width:290px;
-    background-color: rgb(30, 138, 63);
-    color:white;
-    text-transform: uppercase;
-    font-size: 15px;
-    border:none;
-    border-radius:10px;
-    cursor:pointer;
-} 
- .login-form button:hover{
-    background-color: rgb(15, 92, 38);
-}
-.login-form h5{
-    margin-left:50%;
-    color:rgb(51, 51, 51);
-    margin-top:7px;
-}
-.login-form .not-registered{
-    margin-left:40px;
-    font-size: 16px;
-    color: rgb(86, 86, 86);
-    
-}
-.login-form .not-registered Link{
-    text-decoration: none;;
-}
-::-webkit-input-placeholder{
-    color: rgb(110, 110, 110);
-    margin-left:10%;
-}
-.login-eye-toggle{
-    position: absolute;
-    display: none;
-}
-.login-eye-toggle .hide-password{
-    height:2vh;
-    margin-left: 260px;
-    margin-top: -130px;;
+
+.login-form .checkbox {
+    height: 15px;
+    width: 15px;
     cursor: pointer;
 }
-.login-back{
+
+.login-form span {
     position: absolute;
-    height:502px;
-    width:600px;
-    margin-top:-500px;
+    font-size: 14px;
+}
+
+.login-form button {
+    height: 40px;
+    width: 290px;
+    background-color: rgb(30, 138, 63);
+    color: white;
+    text-transform: uppercase;
+    font-size: 15px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.login-form button:hover {
+    background-color: rgb(15, 92, 38);
+}
+
+.login-form h5 {
+    margin-left: 50%;
+    color: rgb(51, 51, 51);
+    margin-top: 7px;
+}
+
+.login-form .not-registered {
+    margin-left: 40px;
+    font-size: 16px;
+    color: rgb(86, 86, 86);
+
+}
+
+.login-form .not-registered Link {
+    text-decoration: none;
+    ;
+}
+
+::-webkit-input-placeholder {
+    color: rgb(110, 110, 110);
+    margin-left: 10%;
+}
+.login-back {
+    position: absolute;
+    height: 502px;
+    width: 600px;
+    margin-top: -500px;
     margin-left: 169px;
     border-top-left-radius: 20px;
-    border-bottom-left-radius: 20px;;
+    border-bottom-left-radius: 20px;
+    ;
     box-shadow: 0px 0px 0px 2px rgb(216, 216, 216);
-    
+
 }
 
-.login-back-h1 h1{
-    position:absolute;
-    margin-top:-350px;
-    margin-left:200px;
+.login-back-h1 h1 {
+    position: absolute;
+    margin-top: -350px;
+    margin-left: 200px;
     text-align: left;
     font-size: 30px;
-    color:rgb(115, 75, 1);
+    color: rgb(115, 75, 1);
 }
 
-.login-back-p p{
-    position:absolute;
-    margin-top:-250px;
-    margin-left:200px;
+.login-back-p p {
+    position: absolute;
+    margin-top: -250px;
+    margin-left: 200px;
     text-align: left;
     font-size: 16px;
-    color:rgb(82, 76, 6);
+    color: rgb(82, 76, 6);
 }
-.login-back-img{
+
+.login-back-img {
     position: absolute;
-    margin-top:-160px;
-    margin-left:250px;
-    padding:10px 20px;
+    margin-top: -160px;
+    margin-left: 250px;
+    padding: 10px 20px;
     border-radius: 50px;
-    border:2px solid green;
+    border: 2px solid green;
     background-color: transparent;
-    color:green;
+    color: green;
 }
-.error{
-    margin-bottom:20px;
-    color:red;
+
+.error {
+    margin-bottom: 20px;
+    color: red;
     background-color: rgba(253, 209, 209, 0.271);
     margin-right: 60px;
     border-radius: 10px;
-   padding: 5px 10px;
-    
+    padding: 5px 10px;
+
 }
-
-

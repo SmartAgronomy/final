@@ -1,24 +1,26 @@
-body{
+body {
     background-color: white;
 }
-.order-confirmed{
-    border:1px solid rgba(172, 239, 164, 0.608);
-    height:250px;
-    width:500px;
-    padding:50px;
+
+.order-confirmed {
+    border: 1px solid rgba(172, 239, 164, 0.608);
+    height: 250px;
+    width: 500px;
+    padding: 50px;
     text-align: left;
-    
-}
-.order-confirmed h2{
-    color:green;
+
 }
 
-.order-confirmed span{
-padding:7px 180px;
-border:1px solid rgba(172, 239, 164, 0.608);
-background-color: rgba(172, 239, 164, 0.608);
-color:green;
-text-transform: uppercase;
-font-weight: 600;
-text-decoration: none;
+.order-confirmed h2 {
+    color: green;
+}
+
+.order-confirmed span {
+    padding: 7px 180px;
+    border: 1px solid rgba(171, 239, 164, 0.774);
+    background-color: rgba(172, 239, 164, 0.608);
+    color: green;
+    text-transform: uppercase;
+    font-weight: 600;
+    text-decoration: none;
 }

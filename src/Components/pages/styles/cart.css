@@ -1,7 +1,7 @@
-
-body{
+body {
   background-color: white;
 }
+
 .home-page {
   display: flex;
 }
@@ -10,11 +10,11 @@ body{
   position: fixed;
   top: 10px;
   width: 70%;
-  left:0;
+  left: 0;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 999;
-  margin-left:15%;
+  margin-left: 15%;
 }
 
 .cart-container {
@@ -23,13 +23,14 @@ body{
   height: 100%;
   overflow: auto;
 }
-.cart-container h1{
-  color:black;
+
+.cart-container h1 {
+  color: black;
   text-align: left;
   font-size: 35px;
   font-weight: 600;
-  padding:10px 20px;
-  font-family:sans-serif;
+  padding: 10px 20px;
+  font-family: sans-serif;
   letter-spacing: 0px;
 }
 
@@ -44,137 +45,158 @@ body{
   width: 100%;
   border-radius: 5px;
   display: flex;
-  padding:10px;
+  padding: 10px;
 }
 
 .product-image {
-  width:100px;
-  height:100px;
+  width: 100px;
+  height: 100px;
 
 }
 
 .product-details {
   margin-top: 10px;
-  margin-left: 30px;;
-  width:100%;
+  margin-left: 30px;
+  ;
+  width: 100%;
 }
-.product-details p{
+
+.product-details p {
   font-size: 20px;
   font-weight: 600;
 }
-.product-details .span{
-  width:100px;
+
+.product-details .span {
+  width: 100px;
 }
-.remove-button p
-{
+
+.remove-button p {
   margin-top: 10px;
 }
-.remove-button{
-  margin-right:20px;
-  margin-left:20px;
+
+.remove-button {
+  margin-right: 20px;
+  margin-left: 20px;
 }
-.remove-button button{
-  height:50px;
-  width:150px;
-  padding:10px 10px;
+
+.remove-button button {
+  height: 50px;
+  width: 150px;
+  padding: 10px 10px;
   border-radius: 5px;
   background-color: rgb(123, 2, 2);
-  border:none;
-  color:white;
+  border: none;
+  color: white;
   box-shadow: 0px 0px 10px 0px rgb(180, 174, 174);
   transition: 0.3s ease;
-  
-}
-.remove-button button:hover{
-  background-color: rgb(86, 1, 1);
-}
-.buy-button button{
-  height:50px;
-  width:150px;
-  padding:10px 10px;
-  border-radius: 5px;
-  background-color: rgb(2, 115, 11);
-  border:none;
-  color:white;
-  box-shadow: 0px 0px 10px 0px rgb(180, 174, 174);
-  transition: 0.3s ease;
-}
-.buy-button button:hover{
-  background-color: rgb(2, 72, 8);
-}
-.buy-button p{
-  margin-top: 10px;
-  color:green; 
-}
-.total{
-  margin-left:160px;
 
 }
-.total h3{
-  display: flex;
-  margin-left:-140px;
-}  
-.total hr{
-  height:2px;
-  width:1180px;
-  margin-left:-140px;
-  background-color: #000000;
-  border:1px solid black
+
+.remove-button button:hover {
+  background-color: rgb(86, 1, 1);
 }
-.total button{
-  height:50px;
-  width:200px;
-  padding:10px 10px;
+
+.buy-button button {
+  height: 50px;
+  width: 150px;
+  padding: 10px 10px;
   border-radius: 5px;
   background-color: rgb(2, 115, 11);
-  border:none;
-  color:white;
+  border: none;
+  color: white;
+  box-shadow: 0px 0px 10px 0px rgb(180, 174, 174);
+  transition: 0.3s ease;
+}
+
+.buy-button button:hover {
+  background-color: rgb(2, 72, 8);
+}
+
+.buy-button p {
+  margin-top: 10px;
+  color: green;
+}
+
+.total {
+  margin-left: 160px;
+
+}
+
+.total h3 {
+  display: flex;
+  margin-left: -140px;
+}
+
+.total hr {
+  height: 2px;
+  width: 1180px;
+  margin-left: -140px;
+  background-color: #000000;
+  border: 1px solid black
+}
+
+.total button {
+  height: 50px;
+  width: 200px;
+  padding: 10px 10px;
+  border-radius: 5px;
+  background-color: rgb(2, 115, 11);
+  border: none;
+  color: white;
   box-shadow: 0px 0px 10px 0px rgb(180, 174, 174);
   transition: 0.3s ease;
   margin-top: 2%;
-  margin-left:-140px;
+  margin-left: -140px;
 }
-.total button:hover{
+
+.total button:hover {
   background-color: rgb(2, 72, 8);
 }
-.quantity button{
-padding:0px 8px;
-margin-right:10px;
-margin-left:10px;
-margin-top:15px;
-font-weight: 600;
-font-size:20px;
-cursor: pointer;
-color:white
-} 
-.quantity span{
+
+.quantity button {
+  padding: 0px 8px;
+  margin-right: 10px;
+  margin-left: 10px;
+  margin-top: 15px;
+  font-weight: 600;
+  font-size: 20px;
+  cursor: pointer;
+  color: white
+}
+
+.quantity span {
   font-size: 20px;
   font-weight: 600;
 }
-.quantity .increase{
-  background-color: rgb(35, 224, 221);
+
+.quantity .increase {
+  background-color: rgb(212, 212, 212);
   border: none;
 }
-.quantity .decrease{
-  background-color: rgb(243, 191, 36);
-  border:none;
+
+.quantity .decrease {
+  background-color: rgb(196, 196, 196);
+  border: none;
 }
-.qr-popup{
+
+.qr-popup {
   position: absolute;
-  margin-top:-50%;
-  margin-left:30%;
+  margin-top: -50%;
+  margin-left: 30%;
   text-align: center;
   transform: scale(0.1);
   visibility: hidden;
   transition: all 0.4s ease;
 }
-.qr-popup img{
-  height:50vh;
+
+.qr-popup img {
+  height: 50vh;
 }
-.openQrPopup{
+
+.openQrPopup {
   visibility: visible;
   transform: scale(1);
-  margin-top:-30%;
+  margin-top: -30%;
 }
 
 .centered-container {
@@ -185,15 +207,15 @@ color:white
   margin-left: 10%;
 }
 
-.centered-container button{
+.centered-container button {
   display: flex;
   justify-content: center;
   margin-top: 100%;
   margin-left: -170%;
   border-radius: 5px;
   background-color: rgb(2, 115, 11);
-  border:none;
-  color:white;
+  border: none;
+  color: white;
   box-shadow: 0px 0px 10px 0px rgb(180, 174, 174);
   transition: 0.3s ease;
   padding: 10px;
@@ -201,22 +223,27 @@ color:white
   font-weight: bold;
   text-decoration: none;
 }
-.order-summary h4{
-  color:green
+
+.order-summary h4 {
+  color: green
 }
-.order-summary p{
-  color:rgb(14, 27, 79)
+
+.order-summary p {
+  color: rgb(14, 27, 79)
 }
-.order-summary img{
-height: 50vh;
-border-radius: 10px;
-background-color: rgba(182, 228, 222, 0.499);
+
+.order-summary img {
+  height: 50vh;
+  border-radius: 10px;
+  background-color: rgba(182, 228, 222, 0.499);
 }
-.order-summary span{
-  color:rgb(12, 97, 108);
+
+.order-summary span {
+  color: rgb(12, 97, 108);
   font-weight: 600;
-  margin-top:40px;
+  margin-top: 40px;
 }
-.order-placed-successfully p{
-  color:green
+
+.order-placed-successfully p {
+  color: green
 }

@@ -10,15 +10,15 @@ import { useEffect } from 'react';
 
 
 function Dashboard() {
-  useEffect(()=>{
-    AOS.init({duration :2000})
- },[])
+  useEffect(() => {
+    AOS.init({ duration: 2000 })
+  }, [])
   return (
-    <form class='body' >  
+    <form class='body' >
       <div >
-          <Header />
-          <BackgroundSlider/>
-          <Main />
+        <Header />
+        <BackgroundSlider />
+        <Main />
       </div>
     </form>
   );

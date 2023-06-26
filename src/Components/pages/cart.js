@@ -10,7 +10,7 @@ import DialogTitle from '@mui/material/DialogTitle';
 import DialogContent from '@mui/material/DialogContent';
 import DialogActions from '@mui/material/DialogActions';
 import Button from '@mui/material/Button';
-import QrReader from "qrcode.react"; // Import the QRCode component
+import QrReader from "qrcode.react"; // Importing QRCode component
 import DialogContentText from '@mui/material/DialogContentText';
 
 
@@ -25,7 +25,7 @@ function Cart() {
   const [orderPlaced, setOrderPlaced] = useState(false);
   const [userDataJson, setQRCodeValue] = useState(""); // Store the QR code value
   const [QRCodeValue, setScannedData] = useState("");
-const [isQRCodeScanned, setIsQRCodeScanned] = useState(false);
+  const [isQRCodeScanned, setIsQRCodeScanned] = useState(false);
 
   const handleOpenPopup = () => {
     setOpen(true);
@@ -66,7 +66,7 @@ const [isQRCodeScanned, setIsQRCodeScanned] = useState(false);
   if (!cookies.access_token) {
     return (
       <div className="centered-container">
-        <p>Please Login To Continue.. </p>
+        <p>Please Login To View Cart </p>
         <Link to="/signin" ><button>LOGIN</button></Link>
       </div>
     );
@@ -144,9 +144,7 @@ const [isQRCodeScanned, setIsQRCodeScanned] = useState(false);
     });
     return total;
   };
-
-
-
+  
   const handleScanQRCode = (data) => {
     if (data) {
       setScannedData(data);
@@ -154,43 +152,43 @@ const [isQRCodeScanned, setIsQRCodeScanned] = useState(false);
       setScannedData(""); // No QR code data scanned
     }
   };
-  
+
   const handleErrorQRCode = (error) => {
     console.log("QR code scanning error: ", error);
   };
 
-  const handleMakePayment = () => {  
+  const handleMakePayment = () => {
     // Get the product details
     const products = data.map((product) => ({
       productName: product.productName,
       quantity: product.quantity,
       amount: product.amount,
     }));
-  
+
     // Combine username and product details
     const userData = {
       products
     };
-  
+
     // Convert the user data to JSON string
     const userDataJson = JSON.stringify(userData);
-  
+
     // Set the QR code value
     setQRCodeValue(userDataJson);
-  
+
     // Place the order logic here
     setTimeout(() => {
       setOrderPlaced(true);
     });
-  
 
-      setTimeout(() => {
-        navigate("/transactionsuccess");
-      }, 3000);
-    
+
+    setTimeout(() => {
+      navigate("/transactionsuccess");
+    }, 3000);
+
   };
-  
-  
+
+
   return (
     <div className="cart-overlay">
       <div className="cart-container">
@@ -209,7 +207,7 @@ const [isQRCodeScanned, setIsQRCodeScanned] = useState(false);
               />
               <div className="product-details">
                 <p>
-                  {product.productName} 
+                  {product.productName}
                 </p>
                 <span><b>Product Category:</b> {product.category.categoryName}</span>
                 <Box
@@ -260,12 +258,12 @@ const [isQRCodeScanned, setIsQRCodeScanned] = useState(false);
             {orderPlaced ? (
               <div>
                 <h3>TOTAL= ₹{calculateTotalAmount()} Only/-</h3>
-              <QrReader
-                delay={300}
-                onError={handleErrorQRCode}
-                onScan={handleScanQRCode}
-                value={QRCodeValue}
-              />
+                <QrReader className="qr-code-reader"
+                  delay={300}
+                  onError={handleErrorQRCode}
+                  onScan={handleScanQRCode}
+                  value={QRCodeValue}
+                />
 
               </div>
             ) : (
@@ -284,39 +282,39 @@ const [isQRCodeScanned, setIsQRCodeScanned] = useState(false);
             )}
           </DialogContent>
           <DialogActions>
-          
+
             {!orderPlaced ? (
               <>
-              <Button onClick={handleAgreeOpenPopup}>Make Payment</Button>
-            <Dialog
-              open={agreeOpen}
-              onClose={handleAgreeClosePopup}
-            >
-              <DialogTitle id="alert-dialog-title">
-                Rental Terms and Conditions
-              </DialogTitle>
-              <DialogContent>
-                <DialogContentText id="alert-dialog-description">
-                By accessing and using our farm equipment rental service,
-                 you agree to the following terms and conditions. <br></br>
-                 * The rental agreement is formed directly between you and 
-                  the Owner of the equipment. Don't worry about the equipment responsibility or liability.<br></br>
-                 * While we strive to provide accurate information, we  guarantee 
-                  the availability or accuracy of equipment listings. <br></br>
-                  * You are responsible 
-                  for verifying suitability, complying with laws, and ensuring your ability 
-                  to operate the equipment safely and for obtaining
-                  insurance and hold the Administrators harmless from any claims.
-                </DialogContentText>
-              </DialogContent>
-              <DialogActions>
-                <Button onClick={handleAgreeClosePopup}>Close</Button>
-                <Button onClick={handleMakePayment} autoFocus>
-                  Agree and Continue
-                </Button>
-              </DialogActions>
-            </Dialog>
-            </>
+                <Button onClick={handleAgreeOpenPopup}>Make Payment</Button>
+                <Dialog
+                  open={agreeOpen}
+                  onClose={handleAgreeClosePopup}
+                >
+                  <DialogTitle id="alert-dialog-title">
+                    Rental Terms and Conditions
+                  </DialogTitle>
+                  <DialogContent>
+                    <DialogContentText id="alert-dialog-description">
+                      By accessing and using our farm equipment rental service,
+                      you agree to the following terms and conditions. <br></br>
+                      * The rental agreement is formed directly between you and
+                      the Owner of the equipment. Don't worry about the equipment responsibility or liability.<br></br>
+                      * While we strive to provide accurate information, we  guarantee
+                      the availability or accuracy of equipment listings. <br></br>
+                      * You are responsible
+                      for verifying suitability, complying with laws, and ensuring your ability
+                      to operate the equipment safely and for obtaining
+                      insurance and hold the Administrators harmless from any claims.
+                    </DialogContentText>
+                  </DialogContent>
+                  <DialogActions>
+                    <Button onClick={handleAgreeClosePopup}>Close</Button>
+                    <Button onClick={handleMakePayment} autoFocus>
+                      Agree and Continue
+                    </Button>
+                  </DialogActions>
+                </Dialog>
+              </>
             ) : (
               <></>
             )}
