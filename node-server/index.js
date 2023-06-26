@@ -23,5 +23,5 @@ server.use('/admin/products', productRoutes);
 server.use('/admin/categories', categoryRoutes);
 
 server.listen(8080, () => {
-  console.log('Server started on port 8080');
+  console.log('Server started on port localhost:8080');
 });

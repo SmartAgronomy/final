@@ -18,7 +18,7 @@ function AddProducts() {
   const [cookies] = useCookies(["access_token"]);
 
 
-useEffect(() => {
+  useEffect(() => {
     fetchProducts();
     fetchCategories();
   }, []);
@@ -32,7 +32,7 @@ useEffect(() => {
     }
   };
 
-  
+
   const handleAddProduct = async (e) => {
     e.preventDefault();
     try {
@@ -51,7 +51,7 @@ useEffect(() => {
           Authorization: `Bearer ${token}`,
         },
       });
-        
+
       console.log('Product added successfully:', response.data);
       setProductName('');
       setProductDescription('');
@@ -66,10 +66,10 @@ useEffect(() => {
       alert(" An Error occured while adding products, Please Fill All the input fields")
     }
   };
-    
 
-  
-  
+
+
+
   const fetchCategories = async () => {
     try {
       const response = await axios.get('http://localhost:8080/admin/categories');
@@ -78,82 +78,82 @@ useEffect(() => {
       console.error('Failed to fetch categories:', error);
     }
   };
-  
 
 
-  
+
+
 
   return (
     <div>
       <AdminBar />
-    
+
       <form class="add-products-form" onSubmit={handleAddProduct}>
         <h1>Add Products List</h1>
-          <input
-            type="text"
-            value={productName}
-            placeholder="Name"
-            onChange={(e) => setProductName(e.target.value)}
-          />
-        
-       
-        
-          
-          <input
-            value={productDescription}
-            placeholder="Description"
-            onChange={(e) => setProductDescription(e.target.value)}
-            rows={1}
-          ></input>
-       
-       
-        
-          
-          <input
-            type="text"
-            value={amount}
-            placeholder="Price"
-            onChange={(e) => setAmount(e.target.value)}
-          />
-       
-        
-        
-          
-          <input
-            type="text"
-            placeholder="Image Filename"
-            value={productImageFilename}
-            onChange={(e) => setProductImageFilename(e.target.value)}
-          />
-        
-       
-        
-          <input
-            type="text"
-            placeholder="Image Link Address"
-            value={productImageLocation}
-            onChange={(e) => setProductImageLocation(e.target.value)}
-          />
-        
-        
-        
-          <select
-              value={selectedCategory}
+        <input
+          type="text"
+          value={productName}
+          placeholder="Name"
+          onChange={(e) => setProductName(e.target.value)}
+        />
 
-              onChange={(e) => setSelectedCategory(e.target.value)}
-            >
-              <option value="">Select a category</option>
-              {categories && categories.map((category) => (
-                <option key={category._id} value={category._id}>
-                  {category.categoryName}
-                </option>
-              ))}
-            </select>
-   
-       <br></br>
+
+
+
+        <input
+          value={productDescription}
+          placeholder="Description"
+          onChange={(e) => setProductDescription(e.target.value)}
+          rows={1}
+        ></input>
+
+
+
+
+        <input
+          type="text"
+          value={amount}
+          placeholder="Price"
+          onChange={(e) => setAmount(e.target.value)}
+        />
+
+
+
+
+        <input
+          type="text"
+          placeholder="Image Filename"
+          value={productImageFilename}
+          onChange={(e) => setProductImageFilename(e.target.value)}
+        />
+
+
+
+        <input
+          type="text"
+          placeholder="Image Link Address"
+          value={productImageLocation}
+          onChange={(e) => setProductImageLocation(e.target.value)}
+        />
+
+
+
+        <select
+          value={selectedCategory}
+
+          onChange={(e) => setSelectedCategory(e.target.value)}
+        >
+          <option value="">Select a category</option>
+          {categories && categories.map((category) => (
+            <option key={category._id} value={category._id}>
+              {category.categoryName}
+            </option>
+          ))}
+        </select>
+
+        <br></br>
         <button type="submit">Add Product</button>
       </form>
-      </div>
-      )
-      }
-      export default AddProducts;
+    </div>
+  )
+}
+export default AddProducts;

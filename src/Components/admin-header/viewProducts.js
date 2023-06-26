@@ -110,46 +110,10 @@ function ViewProducts() {
                 <p class="item-price">Price: {product.amount}/- per day</p>
                 <p class="category">Type: {product.category.categoryName}</p>
                 <br></br>
-                {/* {!editMode && (
-                  // Render the edit button only if edit mode is not enabled
-                  <button onClick={() => handleEditClick(product)}>
-                    Edit
-                  </button>
-                )} */}
-               
-                {/* {editMode && editProductId === product._id && (
-                  // Render the input fields only for the product being edited
-                  <div className="add-products-form">
-                    <h1>Edit Product</h1>
-                    <input
-                      type="text"
-                      name="productName"
-                      value={editedProductData.productName}
-                      onChange={handleInputChange}
-                    />
-                    <input
-                      type="text"
-                      name="productDescription"
-                      value={editedProductData.productDescription}
-                      onChange={handleInputChange}
-                    />
-                    <input
-                      type="text"
-                      name="amount"
-                      value={editedProductData.amount}
-                      onChange={handleInputChange}
-                    />
-                    <button onClick={handleSaveClick}>Save</button>
-                    <div className="cancel">
-                      <button onClick={() => setEditMode(false)}>Cancel</button>
-                      </div>
-                  </div>
-                
-                )} */}
                 <div className='del'>
                   <button onClick={() => handleDeleteProduct(product._id)}>
-                  Delete
-                </button>
+                    Delete
+                  </button>
                 </div>
               </li>
             ))}

@@ -1,4 +1,3 @@
-import Reactc from "react";
 import "./styles/beforeProfile.css"
 
 function BeforeProfile(){

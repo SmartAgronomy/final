@@ -17,7 +17,7 @@ function validateUser(req, res, next) {
 }
 
 
-// Authentication middleware
+// Authorization middleware
 const verifyToken = (req, res, next) => {
   const authHeader = req.headers.authorization;
   if (authHeader) {

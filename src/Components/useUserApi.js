@@ -37,7 +37,7 @@ const useUserAPI = (token) => {
   const addCart = async (product) => {
     try {
       if (!isLogged) {
-        return alert("Please login to continue buying");
+        return alert("Please login to continue renting");
       }
   
       const check = cart.every((item) => item._id !== product._id);

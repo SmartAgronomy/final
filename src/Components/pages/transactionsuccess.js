@@ -21,7 +21,7 @@ function TransactionSuccess() {
     <div className="centered-container">
       {loading ? (
         <div className="order-processing">
-          <CircularProgress sx={{ml:'45%'}}/>
+          <CircularProgress sx={{ ml: '45%' }} />
           <p>Please wait while we processing your order...</p>
         </div>
       ) : (
@@ -29,7 +29,7 @@ function TransactionSuccess() {
           <h2>Transaction Successful!</h2>
           <p>Your payment has been processed successfully.</p>
           Thank you for Your order..!<br></br><br></br>
-         <Link to="/cart"><span>OK</span></Link>
+          <Link to="/cart"><span>OK</span></Link>
         </div>
       )}
     </div>

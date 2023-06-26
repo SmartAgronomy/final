@@ -193,7 +193,7 @@ function Header() {
 
             <li><NavLink to="/blogs"> Blogs</NavLink>
             </li>
-            <li><NavLink to="/products"> Products</NavLink>
+            <li><NavLink to="/products"> MarketPlace</NavLink>
 
 
             </li>
