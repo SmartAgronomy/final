@@ -1,5 +1,6 @@
 
 import './styles/signup.css';
+import './styles/login.css';
 import { useEffect, useState } from 'react';
 import { useNavigate,Link, } from "react-router-dom";
 import reg_back from "../Images/reg-back.webp"
@@ -10,11 +11,13 @@ import eyeOpenIcon from "../Images/eye-regular.svg"
 import tick from "../Images/tick.webp"
 
 
+
 function SignupUpdated() {
   const [form, setForm] = useState({});
   const [users, setUsers] = useState([]);
   const [showPassword, setshowPassword] = useState(false);
   const navigate = useNavigate();
+  const [errorMessage, setErrorMessage] = useState("");
 
   useEffect(() => {
     AOS.init({ duration: 2000 })
@@ -50,16 +53,15 @@ function SignupUpdated() {
           'Content-Type': 'application/json'
         }
       });
-      if(response.status === 400){
-        alert("Given email is already registered");
-      }
-      if(response.data === 200){
+
+      if(response.status === 200){
         alert("you Successfully Login...");
       }
-
-      
   
       const data = await response.json();
+      if(response.status === 400){
+        alert("Alredy Registered With The Given E-Mail Please Login.  .  .");
+      }
     } catch (error) {
       console.error(error);
       // Handle error appropriately, such as showing an error message to the user
@@ -97,6 +99,7 @@ function SignupUpdated() {
 
   return (
     <>
+           {errorMessage && <div className="error">{errorMessage}</div>}
       <div class='reg-back'>
       <img src={reg_back} alt='registration background'/>
     </div>
@@ -195,7 +198,7 @@ function SignupUpdated() {
 </>
         )}
 
-{!validateForm ?(
+{!handleSubmit ?(
         
        <></>
        
