@@ -41,6 +41,7 @@ function AddCategory() {
       setCategoryName('');
       setCategoryAdded(true);
       fetchCategories();
+      alert("Category Added Successfully");
     } catch (error) {
       console.error('Failed to add category:', error);
     }

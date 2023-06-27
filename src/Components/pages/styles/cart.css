@@ -69,16 +69,11 @@ body {
 .product-details .span {
   width: 100px;
 }
-<<<<<<< HEAD
 .product-details .duration{
   margin-top: 5%;  
 }
 .remove-button p
 {
-=======
-
-.remove-button p {
->>>>>>> 23a5310c0cd9450f45f0e3c28595db2e4fe53716
   margin-top: 10px;
 }
 

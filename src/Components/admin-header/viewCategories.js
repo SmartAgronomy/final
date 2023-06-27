@@ -35,6 +35,7 @@ function ViewCategories() {
       });
       alert("Category Deleted Successfully")
       fetchCategories();
+      alert("Category Deleted Successfully")
     } catch (error) {
       console.error('Failed to delete product:', error);
     }

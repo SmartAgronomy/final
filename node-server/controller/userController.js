@@ -4,7 +4,7 @@ const User = require('../models/User');
 
 // Signup controller
 const signup = async (req, res) => {
-  const { fname, lname, mobile, email, password, address, state, city } = req.body;
+  const { fname, lname, mobile, email, password, cpassword, address, state, city } = req.body;
 
   try {
     // Check if user already exists with the same email
@@ -13,15 +13,23 @@ const signup = async (req, res) => {
       return res.status(400).json({ error: 'Email already registered' });
     }
 
-    // Create new user and save to database
-    const newUser = new User({ fname, lname, mobile, email, password, cpassword: password, address, state, city });
-    const savedUser = await newUser.save();    
-    return res.status(200).json({ message: 'Registered Successfully....' });
+    // Check if the passwords match
+    if (password !== cpassword) {
+      return res.status(400).json({ error: 'Passwords do not match' });
+    }
+
+    // Create new user and save to the database
+    const newUser = new User({ fname, lname, mobile, email, password, cpassword, address, state, city });
+    const savedUser = await newUser.save();
+    
+    return res.status(200).json({ savedUser, message: 'Registered Successfully....' });
+
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: 'Internal server error' });
   }
 };
+
 
 // Login controller
 const login = async (req, res) => {

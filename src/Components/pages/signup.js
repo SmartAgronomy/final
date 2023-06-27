@@ -9,6 +9,8 @@ import "aos/dist/aos.css";
 import eyeCloseIcon from "../Images/eye-slash-solid.svg"
 import eyeOpenIcon from "../Images/eye-regular.svg"
 import tick from "../Images/tick.webp"
+import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
+import VisibilityIcon from '@mui/icons-material/Visibility';
 
 
 
@@ -38,10 +40,6 @@ function SignupUpdated() {
     })
   }
 
-
-
-
-
   const handleSubmit = async (e) => {
     e.preventDefault();
   
@@ -53,48 +51,60 @@ function SignupUpdated() {
           'Content-Type': 'application/json'
         }
       });
-
-      if(response.status === 200){
-        alert("you Successfully Login...");
-      }
   
       const data = await response.json();
-      if(response.status === 400){
-        alert("Alredy Registered With The Given E-Mail Please Login.  .  .");
-      }
+  
+      if (response.status === 200) {
+        openPopup();
+        alert(data.message);
+        // Handle successful registration
+      } else if (response.status === 400) {
+        alert(data.error);
+        // Handle password matching error
+      } 
+  
     } catch (error) {
       console.error(error);
       // Handle error appropriately, such as showing an error message to the user
     }
   };
   
-
-  const getUsers = async ()=>{
-    const response = await fetch('http://localhost:8080/api/signup',{
-      method:'GET',
-    })
-   const data = await response.json();
-   setUsers(data);
-  }
-
-  useEffect(()=>{
+  
+  const getUsers = async () => {
+    try {
+      const response = await fetch('http://localhost:8080/api/signup', {
+        method: 'GET',
+      });
+      const data = await response.json();
+      setUsers(data);
+    } catch (error) {
+      console.error(error);
+      // Handle error appropriately, such as showing an error message to the user
+    }
+  };
+  
+  useEffect(() => {
     getUsers();
-  },[])
-
+  }, []);
+  
   function validateForm() {
-    const password = form.password;
-    const confirmPassword =form.cpassword;
-
-    if (!form.fname || !form.lname || !form.mobile || !form.email || !password || !form.city || !form.state || !form.address) {
-      alert("Please Fill all the details Correctlly below to Register")
-    }
-
-    if (password !== confirmPassword){
-      alert("thikala");
-    }
-
-
+    const password = form.password;  
+    if (
+      !form.fname ||
+      !form.lname ||
+      !form.mobile ||
+      !form.email ||
+      !password ||
+      !form.city ||
+      !form.state ||
+      !form.address
+    ) {
+      alert("Please fill all the details correctly below to register.");
+      return;
+    } 
+    handleSubmit(); // Proceed with form submission
   }
+  
 
 
   return (
@@ -156,15 +166,36 @@ function SignupUpdated() {
           <input type="text" placeholder="Permanent Address " name="address" onChange={handleForm} />
 
 
-          <input type={showPassword ? "text" : "password"} placeholder="Password" name="password"  onChange={handleForm} minLength="6" />
-          <div class="signup-eye-toggle" onClick={() => setshowPassword(!showPassword)}>
-            {showPassword ? <img class="sign-up-hide-pass" alt="Eye icon(opened)" src={eyeOpenIcon} /> : <img class="sign-up-hide-pass" alt="Eue-icon(closed)" src={eyeCloseIcon} />}
-          </div>
+          <input type={showPassword ? "text" : "password"} placeholder="Password" name="password" onChange={handleForm} minLength="6" />
+          <div class="signup-eye-toggle1" onClick={() => setshowPassword(!showPassword)}>
+            {showPassword ? <VisibilityIcon sx={{
+                                                  color:'white',
+                                                  marginLeft:'760px',
+                                                  marginTop:'-120px',
+                                                  cursor:'pointer',
+                                                  height:'2.5vh'}} /> 
 
-          <input type={showPassword ? "text" : "password"} name="cpassword"  placeholder="confirm Password" onChange={handleForm}minLength="6" />
-          <div class="signup-eye-toggle" onClick={() => setshowPassword(!showPassword)}>
-            {showPassword ? <img class="sign-up-hide-pass" alt="Eye icon(opened)" src={eyeOpenIcon} /> : <img class="sign-up-hide-pass" alt="Eue-icon(closed)" src={eyeCloseIcon} />}
-    
+                                    : <VisibilityOffIcon sx={{color:'white',
+                                                              marginLeft:'760px',
+                                                              marginTop:'-120px',
+                                                              cursor:'pointer',
+                                                              height:'2.5vh'}}  />}
+                                                              </div>
+                                                              <input type={showPassword ? "text" : "password"} name="cpassword" placeholder="confirm Password" onChange={handleForm} minLength="6" />
+          <div class="signup-eye-toggle2" onClick={() => setshowPassword(!showPassword)}>
+            {showPassword ? <VisibilityIcon sx={{
+                                                  color:'white',
+                                                  marginLeft:'500px',
+                                                  marginTop:'-120px',
+                                                  cursor:'pointer',
+                                                height:'2.5vh'}}
+                                                  /> : <VisibilityOffIcon sx={{
+                                                    color:'white',
+                                                    marginLeft:'500px',
+                                                    marginTop:'-120px',
+                                                    cursor:'pointer',
+                                                    height:'2.5vh'}}/>}
+
           </div>
         
 

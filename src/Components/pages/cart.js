@@ -370,9 +370,7 @@ function Cart() {
     <div>
       <h3>Order Summary:</h3>
       <h4>Only Duration Selected Products are Displayed</h4>
-      {data
-        .filter((product) => calculateDuration(product.startDate, product.endDate))
-        .map((product) => (
+      {data.map((product) => (
           <div key={product._id}>
             <p>
               Product: {product.productName}<br />

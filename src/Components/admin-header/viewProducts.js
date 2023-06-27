@@ -25,6 +25,7 @@ function ViewProducts() {
         },
       });
       fetchProducts();
+      alert("Product Deleted Successfully ....")
     } catch (error) {
       console.error('Failed to delete product:', error);
     }
